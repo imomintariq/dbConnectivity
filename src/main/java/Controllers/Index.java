@@ -24,7 +24,7 @@ public class Index {
         Transaction trans= session.beginTransaction();
 
         Student s =  new Student();
-        s.setId();
+        s.setId(69);
         s.setFirstName("Aloo");
         s.setLastName("Pyaaz");
         session.save(s);

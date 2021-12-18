@@ -29,6 +29,7 @@ public class Main extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
+        System.out.println("Love u baby momin");
         String fxmlPath = "HelloWorld.fxml";
         URL url = getClass().getClassLoader().getResource(fxmlPath);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
