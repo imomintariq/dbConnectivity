@@ -67,7 +67,7 @@
       <Label text="Label" BorderPane.alignment="TOP_LEFT" />
    </bottom>
    <center>
-      <ImageView fitHeight="305.0" fitWidth="526.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+      <ImageView pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
             <Image url="@images/sideImage.jpg" />
          </image>

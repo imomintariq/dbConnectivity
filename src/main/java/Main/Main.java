@@ -33,7 +33,7 @@ public class Main extends Application{
         String fxmlPath = "HelloWorld.fxml";
         URL url = getClass().getClassLoader().getResource(fxmlPath);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 735, 360);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
