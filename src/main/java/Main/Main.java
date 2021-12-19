@@ -30,16 +30,17 @@ public class Main extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        stg = stage;
         System.out.println("Love u baby momin");
-        String fxmlPath = "LogIn.fxml";
+        stg = stage;
+        String fxmlPath = "SignUp.fxml";
         URL url = getClass().getClassLoader().getResource(fxmlPath);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
-        Scene scene = new Scene(fxmlLoader.load(), 700, 400);
+        Scene scene = new Scene(fxmlLoader.load(), 735, 360);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
     }
+
     public void changeScene(String fxml) throws IOException{
         URL url = getClass().getClassLoader().getResource(fxml);
         Parent pane = FXMLLoader.load(url);
