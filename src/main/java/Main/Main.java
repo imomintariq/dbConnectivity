@@ -30,22 +30,21 @@ public class Main extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        stg = stage;
         System.out.println("Love u baby momin");
-        String fxmlPath = "LogIn.fxml";
+        stg = stage;
+        String fxmlPath = "SignUp.fxml";
         URL url = getClass().getClassLoader().getResource(fxmlPath);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
-        Scene scene = new Scene(fxmlLoader.load(), 700, 400);
+        Scene scene = new Scene(fxmlLoader.load(), 735, 360);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
     }
+
     public void changeScene(String fxml) throws IOException{
-        try {
-            Parent pane = FXMLLoader.load(getClass().getResource(fxml));
-            stg.getScene().setRoot(pane);
-        } catch(Exception e){
-            System.out.println("Scene not loaded");
-        }
+        URL url = getClass().getClassLoader().getResource(fxml);
+        Parent pane = FXMLLoader.load(url);
+        stg.getScene().setRoot(pane);
+
     }
 }
