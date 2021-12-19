@@ -30,7 +30,7 @@ public class Main extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         System.out.println("Love u baby momin");
-        String fxmlPath = "HelloWorld.fxml";
+        String fxmlPath = "signUpScreen.fxml";
         URL url = getClass().getClassLoader().getResource(fxmlPath);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
         Scene scene = new Scene(fxmlLoader.load(), 735, 360);
