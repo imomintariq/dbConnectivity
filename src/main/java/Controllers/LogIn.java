@@ -1,18 +1,12 @@
 package Controllers;
 
-import Entities.Student;
 import Main.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
-public class Index {
+public class LogIn {
 
     @FXML
     private TextField password;
@@ -43,7 +37,7 @@ public class Index {
     void signUpButtonClicked(MouseEvent event) {
         Main main = new Main();
         try {
-            main.changeScene("SignUp.fxml");
+            main.changeScene("SignUp2.fxml");
         }
         catch(Exception e){
             System.out.println("Sign Up Page not Loaded");

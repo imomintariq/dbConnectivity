@@ -32,11 +32,11 @@ public class Main extends Application{
     public void start(Stage stage) throws Exception {
         System.out.println("Love u baby momin");
         stg = stage;
-        String fxmlPath = "SignUp.fxml";
+        String fxmlPath = "LogIn.fxml";
         URL url = getClass().getClassLoader().getResource(fxmlPath);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
         Scene scene = new Scene(fxmlLoader.load(), 735, 360);
-        stage.setTitle("Hello!");
+        stage.setTitle("Kameti Management System");
         stage.setScene(scene);
         stage.show();
     }
