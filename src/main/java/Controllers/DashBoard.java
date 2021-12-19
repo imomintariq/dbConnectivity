@@ -19,7 +19,8 @@ public class DashBoard {
     private Button viewKametisButton;
 
     @FXML
-    void createKametiButtonClicked(MouseEvent event) {
+    void createKametiButtonClicked(MouseEvent event)
+    {
 
     }
 

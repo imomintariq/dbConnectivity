@@ -1,5 +1,5 @@
 package Controllers;
-
+import Main.KametiManagementSystem;
 import Main.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,6 +23,8 @@ public class LogIn {
     @FXML
     void SignInButtonClicked(MouseEvent event) {
         Main main = new Main();
+        KametiManagementSystem kms = new KametiManagementSystem();
+        kms.LogIn(username.getText(),password.getText());
         try {
             main.changeScene("DashBoard.fxml");
         }
