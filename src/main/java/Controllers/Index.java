@@ -1,6 +1,7 @@
 package Controllers;
 
 import Entities.Student;
+import Main.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,12 +29,25 @@ public class Index {
 
     @FXML
     void SignInButtonClicked(MouseEvent event) {
+        Main main = new Main();
+        try {
+            main.changeScene("DashBoard.fxml");
+        }
+        catch(Exception e){
+            System.out.println("Sign Up Page not Loaded");
+        }
 
     }
 
     @FXML
     void signUpButtonClicked(MouseEvent event) {
-
+        Main main = new Main();
+        try {
+            main.changeScene("SignUp.fxml");
+        }
+        catch(Exception e){
+            System.out.println("Sign Up Page not Loaded");
+        }
     }
 
 /*    @FXML
