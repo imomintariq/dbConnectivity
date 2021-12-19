@@ -14,8 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Index">
-
+<BorderPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Index">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -45,7 +44,7 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
             <TextField fx:id="password" />
             <Region />
-            <Button fx:id="signInButton" mnemonicParsing="false" onMouseClicked="#signInButtonClicked" prefHeight="27.0" prefWidth="62.0" style="-fx-background-color: #2DB4A5;" text="Sign In">
+            <Button fx:id="signInButton" mnemonicParsing="false" onMouseClicked="#SignInButtonClicked" prefHeight="27.0" prefWidth="62.0" style="-fx-background-color: #2DB4A5;" text="Sign In">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
