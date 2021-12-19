@@ -1,36 +1,32 @@
 package Controllers;
 
-import Entities.Student;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 public class Index {
-    @FXML
-    private Label welcomeText;
 
     @FXML
-    protected void onHelloButtonClick() {
-        Configuration con = new Configuration();
-        con.configure().addAnnotatedClass(Student.class);
-        /*SessionFactory sf =
-                new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-        *///
-        SessionFactory sf= con.buildSessionFactory();
-        Session session= sf.openSession();
-        Transaction trans= session.beginTransaction();
+    private TextField password;
 
-        Student s =  new Student();
-        s.setId(69);
-        s.setFirstName("Aloo");
-        s.setLastName("Pyaaz");
-        session.save(s);
+    @FXML
+    private Button signInButton;
 
+    @FXML
+    private Button signUpButton;
 
-        trans.commit();
-        welcomeText.setText("Welcome to JavaFX Application!");
+    @FXML
+    private TextField username;
+
+    @FXML
+    void signInButtonClicked(MouseEvent event) {
+
     }
+
+    @FXML
+    void signUpButtonClicked(MouseEvent event) {
+
+    }
+
 }
