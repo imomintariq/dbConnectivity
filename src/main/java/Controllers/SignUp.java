@@ -1,5 +1,7 @@
 package Controllers;
 
+import Main.KametiManagementSystem;
+import Main.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -7,6 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class SignUp {
+    @FXML
+    private Button backButton;
+
     @FXML
     private TextField cnic;
 
@@ -36,6 +41,25 @@ public class SignUp {
 
     @FXML
     void registerButtonClicked(MouseEvent event) {
-
+        KametiManagementSystem kms = new KametiManagementSystem();
+        String _username = username.getText();
+        String _password = password.getText();
+        String _email = email.getText();
+        String _cnic = cnic.getText();
+        String _firstName = firstName.getText();
+        String _lastName = lastName.getText();
+        String _phoneNumber = phoneNumber.getText();
+        String _confirmedPassword = confirmPassword.getText();
+        kms.registerAUser(_username,_password,_email,_cnic,_firstName,_lastName,_phoneNumber,_confirmedPassword);
+    }
+    @FXML
+    void backButtonClicked(MouseEvent event) {
+        Main main = new Main();
+        try {
+            main.changeScene("LogIn.fxml");
+        }
+        catch(Exception e){
+            System.out.println("Sign Up Page not Loaded");
+        }
     }
 }

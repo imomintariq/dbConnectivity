@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SignUp">
    <top>
       <VBox BorderPane.alignment="CENTER">
@@ -42,12 +41,12 @@
       </VBox>
    </top>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="331.0" prefWidth="469.0" BorderPane.alignment="CENTER">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" />
             <TextField fx:id="firstName" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" />
-            <TextField fx:id="lastName" />
+            <TextField fx:id="lastName" prefHeight="25.0" prefWidth="477.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" />
             <TextField fx:id="username" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
@@ -68,21 +67,19 @@
          </children>
       </VBox>
    </center>
-   <left>
-      <ImageView fitHeight="193.0" fitWidth="228.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="@images/kameti.jpeg" />
-         </image>
-      </ImageView>
-   </left>
-   <right>
-      <ImageView fitHeight="198.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="@images/sideImage.jpg" />
-         </image>
-      </ImageView>
-   </right>
    <bottom>
       <Label text="Label" BorderPane.alignment="CENTER" />
    </bottom>
+   <right>
+      <VBox prefHeight="358.0" prefWidth="413.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="319.0" fitWidth="391.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/kameti.jpeg" />
+               </image>
+            </ImageView>
+            <Button fx:id="backButton" mnemonicParsing="false" onMouseClicked="#backButtonClicked" prefHeight="80.0" prefWidth="189.0" text="Back" />
+         </children>
+      </VBox>
+   </right>
 </BorderPane>
