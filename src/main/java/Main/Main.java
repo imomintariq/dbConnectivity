@@ -1,6 +1,12 @@
 package Main;
 
 import Entities.Student;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -29,8 +35,16 @@ public class Main extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        System.out.println("Love u baby momin");
-        String fxmlPath = "HelloWorld.fxml";
+        Image image1 = new Image("images/kameti logo.png");
+        Image image2 = new Image("images/kameti logo.png");
+        ImageView imageView = new ImageView();
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.ZERO, new KeyValue(imageView.imageProperty(), image1)),
+                new KeyFrame(Duration.seconds(3), new KeyValue(imageView.imageProperty(), image2)),
+                new KeyFrame(Duration.seconds(2), new KeyValue(imageView.imageProperty(), null))
+        );
+        timeline.play();
+        String fxmlPath = "StartingScreen.fxml";
         URL url = getClass().getClassLoader().getResource(fxmlPath);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
         Scene scene = new Scene(fxmlLoader.load(), 735, 360);
