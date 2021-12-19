@@ -41,11 +41,9 @@ public class Main extends Application{
         stage.show();
     }
     public void changeScene(String fxml) throws IOException{
-        try {
-            Parent pane = FXMLLoader.load(getClass().getResource(fxml));
-            stg.getScene().setRoot(pane);
-        } catch(Exception e){
-            System.out.println("Scene not loaded");
-        }
+        URL url = getClass().getClassLoader().getResource(fxml);
+        Parent pane = FXMLLoader.load(url);
+        stg.getScene().setRoot(pane);
+
     }
 }
