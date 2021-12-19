@@ -12,17 +12,19 @@ import javafx.util.Duration;
 import javafx.fxml.FXML;
 
 public class StartingScreen {
-
     @FXML
     private ImageView KametiLogoImage;
-    Image image1 = new Image("@images/kameti logo.png") ;
-    Image image2 = new Image("@images/kameti logo.png")  ;
-    ImageView imageView = new ImageView();
-    Timeline timeline = new Timeline(
-            new KeyFrame(Duration.ZERO, new KeyValue(imageView.imageProperty(), image1)),
-            new KeyFrame(Duration.seconds(3), new KeyValue(imageView.imageProperty(), image2)),
-            new KeyFrame(Duration.seconds(8), new KeyValue(imageView.imageProperty(), null))
-    );
-     //   timeline.play();
-    StackPane root = new StackPane();
+
+    public void DisplayStartingLogo() {
+        Image image1 = new Image("@images/kameti logo.png");
+        Image image2 = new Image("@images/kameti logo.png");
+        ImageView imageView = new ImageView();
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.ZERO, new KeyValue(imageView.imageProperty(), image1)),
+                new KeyFrame(Duration.seconds(3), new KeyValue(imageView.imageProperty(), image2)),
+                new KeyFrame(Duration.seconds(2), new KeyValue(imageView.imageProperty(), null))
+        );
+        timeline.play();
+        StackPane root = new StackPane();
+    }
 }
