@@ -43,6 +43,39 @@ public class Kameti {
     @Column(name = "rule5", nullable = false, length = 45)
     private String rule5;
 
+    @Column(name = "isPrivate", nullable = false, length = 45)
+    private String isPrivate;
+
+    @Column(name = "indivisualShare", nullable = false)
+    private Integer indivisualShare;
+
+    @Column(name = "totalMembers", nullable = false)
+    private Integer totalMembers;
+
+    public Integer getTotalMembers() {
+        return totalMembers;
+    }
+
+    public void setTotalMembers(Integer totalMembers) {
+        this.totalMembers = totalMembers;
+    }
+
+    public Integer getIndivisualShare() {
+        return indivisualShare;
+    }
+
+    public void setIndivisualShare(Integer indivisualShare) {
+        this.indivisualShare = indivisualShare;
+    }
+
+    public String getIsPrivate() {
+        return isPrivate;
+    }
+
+    public void setIsPrivate(String isPrivate) {
+        this.isPrivate = isPrivate;
+    }
+
     public String getRule5() {
         return rule5;
     }
