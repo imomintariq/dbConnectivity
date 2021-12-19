@@ -1,6 +1,7 @@
 package Main;
 
 import Entities.Student;
+import javafx.scene.Parent;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -21,19 +22,30 @@ import java.net.URL;
 
 public class Main extends Application{
 
+    private static Stage stg;
+
     public static void main(String [] args){
         launch();
     }
 
     @Override
     public void start(Stage stage) throws Exception {
+        stg = stage;
         System.out.println("Love u baby momin");
-        String fxmlPath = "signUpScreen.fxml";
+        String fxmlPath = "LogIn.fxml";
         URL url = getClass().getClassLoader().getResource(fxmlPath);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
-        Scene scene = new Scene(fxmlLoader.load(), 735, 360);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 400);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
+    }
+    public void changeScene(String fxml) throws IOException{
+        try {
+            Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+            stg.getScene().setRoot(pane);
+        } catch(Exception e){
+            System.out.println("Scene not loaded");
+        }
     }
 }
