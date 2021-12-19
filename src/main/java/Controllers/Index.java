@@ -34,7 +34,7 @@ public class Index {
             main.changeScene("DashBoard.fxml");
         }
         catch(Exception e){
-            System.out.println("Sign Up Page not Loaded");
+            System.out.println("DashBoard Page not Loaded");
         }
 
     }
