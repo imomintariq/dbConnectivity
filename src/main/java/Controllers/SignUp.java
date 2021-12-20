@@ -63,15 +63,22 @@ public class SignUp {
         }
 
         KametiManagementSystem kms = new KametiManagementSystem();
-        String _username = username.getText();
-        String _password = password.getText();
-        String _email = email.getText();
-        String _cnic = cnic.getText();
-        String _firstName = firstName.getText();
-        String _lastName = lastName.getText();
-        String _phoneNumber = phoneNumber.getText();
-        String _confirmedPassword = confirmPassword.getText();
-        kms.registerAUser(_username,_password,_email,_cnic,_firstName,_lastName,_phoneNumber,_confirmedPassword);
+
+        try {
+            String _username = username.getText();
+            String _password = password.getText();
+            String _email = email.getText();
+            String _cnic = cnic.getText();
+            String _firstName = firstName.getText();
+            String _lastName = lastName.getText();
+            String _phoneNumber = phoneNumber.getText();
+            String _confirmedPassword = confirmPassword.getText();
+
+            kms.registerAUser(_username,_password,_email,_cnic,_firstName,_lastName,_phoneNumber,_confirmedPassword);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
 }

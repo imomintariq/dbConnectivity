@@ -2,12 +2,14 @@ package Main;
 
 import Entities.User;
 import Entities.Kameti;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class KametiManagementSystem {
@@ -64,10 +66,33 @@ public class KametiManagementSystem {
             return false;
     }
 
+    public ArrayList<String> retrieveKametis() {
+
+        Configuration con = new Configuration();
+        con.configure().addAnnotatedClass(Kameti.class);
+
+        SessionFactory sf= con.buildSessionFactory();
+        Session session= sf.openSession();
+        Transaction trans= session.beginTransaction();
+        List<Kameti> kametiList = session.createQuery("FROM Kameti").getResultList();
+        ArrayList<String> kametiStringList = new ArrayList<>();
+
+        for(int i=0;i<kametiList.size();i++)
+        {
+            System.out.println(kametiList.get(i).getKametiName());
+            System.out.println(kametiList.get(i).getKametiDuration());
+            System.out.println(kametiList.get(i).getTotalPayout());
+            kametiStringList.add(kametiList.get(i).getKametiName()+"                  "+kametiList.get(i).getKametiDuration()+"                "+kametiList.get(i).getTotalPayout());
+
+        }
+        return kametiStringList;
+
+    }
+
     public void AddAKameti(String KametiName, String KametiFrequency, String Rule1, String Rule2, String Rule3, String Rule4, String Rule5, String isPrivate, int KametiPayout, LocalDate LC,int kametiDuration)
     {
         Configuration con = new Configuration();
-        con.configure().addAnnotatedClass(User.class);
+        con.configure().addAnnotatedClass(Kameti.class);
 
         SessionFactory sf = con.buildSessionFactory();
         Session session = sf.openSession();
@@ -87,7 +112,7 @@ public class KametiManagementSystem {
         K.setStartDate(LC);
         K.setTotalMembers(10);
         K.setIndivisualShare(1000);
-        K.setId(1);
+        session.save(K);
         trans.commit();
 
     }

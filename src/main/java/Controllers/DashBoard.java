@@ -49,7 +49,13 @@ public class DashBoard {
 
     @FXML
     void viewKametisButtonClicked(MouseEvent event) {
-
+        Main main = new Main();
+        try {
+            main.changeScene("PublicKametis.fxml");
+        }
+        catch(Exception e){
+            System.out.println("Public Kameti Lists Page not Loaded");
+        }
     }
 
     @FXML
