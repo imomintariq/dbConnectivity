@@ -19,9 +19,9 @@
                   <Image url="@images/kameti.jpeg" />
                </image>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fbaf3e" height="36.0" layoutX="209.0" layoutY="85.0" stroke="#f8f8f8" strokeType="INSIDE" strokeWidth="0.0" width="212.0" />
-            <ListView fx:id="kametiList" layoutX="209.0" layoutY="120.0" prefHeight="244.0" prefWidth="212.0" style="-fx-background-color: E3482D;" />
-            <Text fill="WHITE" layoutX="217.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fbaf3e" height="36.0" layoutX="181.0" layoutY="85.0" stroke="#f8f8f8" strokeType="INSIDE" strokeWidth="0.0" width="284.0" />
+            <ListView fx:id="kametiList" layoutX="181.0" layoutY="120.0" prefHeight="244.0" prefWidth="284.0" style="-fx-background-color: E3482D;" />
+            <Text fill="WHITE" layoutX="204.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
                <font>
                   <Font name="Arial Bold Italic" size="15.0" />
                </font>
@@ -31,12 +31,12 @@
                   <Font name="System Bold" size="21.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="283.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration">
+            <Text fill="WHITE" layoutX="292.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration">
                <font>
                   <Font name="Arial Bold Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="364.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payout">
+            <Text fill="WHITE" layoutX="383.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payout">
                <font>
                   <Font name="Arial Bold Italic" size="15.0" />
                </font>
