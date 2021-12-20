@@ -27,16 +27,17 @@ public class PublicKametis implements Initializable {
         KametiManagementSystem kms = new KametiManagementSystem();
         ArrayList<String> k = kms.retrieveKametis();
         kametiList.getItems().addAll(k);
-/*        kametiList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+       kametiList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                selectedKameti = kametiList.getSelectionModel().getSelectedIndex();//getting current selection
+           @Override
+           public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+               selectedKameti = kametiList.getSelectionModel().getSelectedIndex();//getting current selection
 
-                System.out.println(currentCandidate);
+               System.out.println(currentCandidate);
 
-            }
-        });*/
+           }
+       }
+    }
     }
 
     @FXML
