@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class KametiManagementSystem {
@@ -38,6 +39,29 @@ public class KametiManagementSystem {
         trans.commit();
 
     }
+//
+public Kameti retrievePrivateKametis(String Username, String Password) {
+
+    Configuration con = new Configuration();
+    con.configure().addAnnotatedClass(Kameti.class);
+
+    SessionFactory sf = con.buildSessionFactory();
+    Session session = sf.openSession();
+    Transaction trans = session.beginTransaction();
+    List<Kameti> kametiList = session.createQuery("FROM Kameti").getResultList();
+    ArrayList<String> kametiStringList = new ArrayList<>();
+
+    for (int i = 0; i < kametiList.size(); i++) {
+        System.out.println(kametiList.get(i).getKametiName());
+        System.out.println(kametiList.get(i).getKametiDuration());
+        System.out.println(kametiList.get(i).getTotalPayout());
+        if(Username.equals(kametiList.get(i).getKametiName()) && Password.equals(kametiList.get(i).getId())) {
+            kametiStringList.add(kametiList.get(i).getKametiName() + "          " + kametiList.get(i).getKametiDuration() + kametiList.get(i).getTotalPayout());
+            return kametiList.get(i);
+        }
+    }
+    return null;
+}
     public boolean LogIn(String Username, String Password) {
 
         Configuration con = new Configuration();
@@ -83,7 +107,7 @@ public class KametiManagementSystem {
         K.setStartDate(LC);
         K.setTotalMembers(10);
         K.setIndivisualShare(1000);
-        K.setId(1);
+        K.setId(2);
         session.save(K);
         trans.commit();
         System.out.println(Rule1 + Rule2 + Rule3 + Rule4 + Rule5);

@@ -1,6 +1,7 @@
 package Controllers;
 
 import Main.Main;
+import Utility.PrivateKametiDetails;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -39,7 +40,16 @@ public class JoinAKameti {
 
     @FXML
     void privateKametiButtonClicked(MouseEvent event) {
-
+        PrivateKametiDetails pvk = PrivateKametiDetails.getInstance();
+        pvk.setKametiCode(kametiCode.getText());
+        pvk.setKametiName(kametiName.getText());
+        Main main = new Main();
+        try {
+            main.changeScene("PrivateKameti.fxml");
+        }
+        catch(Exception e){
+            System.out.println("Private Kameti Page not Loaded");
+        }
     }
 
     @FXML
