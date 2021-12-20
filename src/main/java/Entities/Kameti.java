@@ -8,7 +8,6 @@ import java.time.LocalDate;
 public class Kameti {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-
     @Column(name = "kametiId", nullable = false)
     private Integer id;
 

@@ -23,10 +23,10 @@ public class SignUp {
     private TextField email;
 
     @FXML
-    private TextField firstName;
+    private TextField firstname;
 
     @FXML
-    private TextField lastName;
+    private TextField lastname;
 
     @FXML
     private PasswordField password;
@@ -40,46 +40,34 @@ public class SignUp {
     @FXML
     private TextField username;
 
+
     @FXML
     void backButtonClicked(MouseEvent event) {
         Main main = new Main();
         try {
             main.changeScene("LogIn.fxml");
-        }
-        catch(Exception e){
-            System.out.println("Sign Up Page not Loaded");
+        } catch (Exception e) {
+            System.out.println("Log In Page not Loaded");
         }
     }
 
     @FXML
     void registerButtonClicked(MouseEvent event) {
 
-        Main main = new Main();
-        try {
-            main.changeScene("LogIn.fxml");
-        }
-        catch(Exception e){
-            System.out.println("Sign In Page not Loaded");
+        String _username = username.getText();
+        String _password = password.getText();
+        String _email = email.getText();
+        String _cnic = cnic.getText();
+        String _firstName = firstname.getText();
+        String _lastName = lastname.getText();
+        String _phoneNumber = phoneNumber.getText();
+        String _confirmedPassword = confirmPassword.getText();
+        if (_password.equals(_confirmedPassword)) {
+            KametiManagementSystem kms = new KametiManagementSystem();
+            kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword);
         }
 
-        KametiManagementSystem kms = new KametiManagementSystem();
-
-        try {
-            String _username = username.getText();
-            String _password = password.getText();
-            String _email = email.getText();
-            String _cnic = cnic.getText();
-            String _firstName = firstName.getText();
-            String _lastName = lastName.getText();
-            String _phoneNumber = phoneNumber.getText();
-            String _confirmedPassword = confirmPassword.getText();
-
-            kms.registerAUser(_username,_password,_email,_cnic,_firstName,_lastName,_phoneNumber,_confirmedPassword);
         }
-        catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
+
 
 }
-

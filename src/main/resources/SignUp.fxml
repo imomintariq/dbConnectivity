@@ -24,11 +24,6 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <Text layoutX="298.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
             <Button fx:id="registerButton" layoutX="488.0" layoutY="395.0" mnemonicParsing="false" onMouseClicked="#registerButtonClicked" prefHeight="34.0" prefWidth="87.0" style="-fx-background-color: E3482D;" text="Register" textFill="#f5f5f5">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -39,12 +34,12 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <TextField fx:id="firstname" layoutX="294.0" layoutY="68.0" prefHeight="34.0" prefWidth="150.0" promptText="First Name">
+            <TextField fx:id="firstName" layoutX="294.0" layoutY="68.0" prefHeight="34.0" prefWidth="150.0" promptText="First Name">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="lastname" layoutX="464.0" layoutY="68.0" prefHeight="34.0" prefWidth="150.0" promptText="Last Name">
+            <TextField fx:id="lastName" layoutX="464.0" layoutY="68.0" prefHeight="34.0" prefWidth="150.0" promptText="Last Name">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
