@@ -1,3 +1,4 @@
+
 package Controllers;
 
 import Main.KametiManagementSystem;
@@ -7,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+
+import java.io.*;
 
 public class SignUp {
 
@@ -40,7 +43,6 @@ public class SignUp {
     @FXML
     private TextField username;
 
-
     @FXML
     void backButtonClicked(MouseEvent event) {
         Main main = new Main();
@@ -52,8 +54,8 @@ public class SignUp {
     }
 
     @FXML
-    void registerButtonClicked(MouseEvent event) {
-        String _username = username.getText();
+    void registerButtonClicked(MouseEvent event) throws IOException {
+            String _username = username.getText();
         String _password = password.getText();
         String _email = email.getText();
         String _cnic = cnic.getText();
@@ -65,16 +67,38 @@ public class SignUp {
         if (_password.equals(_confirmedPassword)) {
             KametiManagementSystem kms = new KametiManagementSystem();
             kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword);
+            FileWriter Fr = new FileWriter("Users.txt",true );
+            BufferedWriter br = new BufferedWriter(Fr);
+            String toWrite ="";
+            toWrite += _username;
+            toWrite += "  -  ";
+            toWrite += _password;
+            toWrite += "  -  ";
+            toWrite += _email;
+            toWrite += "  -  ";
+            toWrite += _cnic;
+            toWrite += "  -  ";
+            toWrite += _firstName;
+            toWrite += "  -  ";
+            toWrite += _lastName;
+            toWrite += "  -  ";
+            toWrite += _phoneNumber;
+            toWrite += "  -  ";
+            toWrite += _confirmedPassword;
+            toWrite += "  -  ";
+            br.write(toWrite);
+            br.newLine();
+            br.close();
+
+            Main main = new Main();
+            try {
+                main.changeScene("LogIn.fxml");
+            } catch (Exception e) {
+                System.out.println("Log In Page not Loaded");
+            }
         }
 
-        Main main = new Main();
-        try {
-            main.changeScene("LogIn.fxml");
-        } catch (Exception e) {
-            System.out.println("Log In Page not Loaded");
         }
-
-    }
-
 
 }
+

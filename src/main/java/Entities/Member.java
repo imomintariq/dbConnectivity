@@ -1,26 +1,47 @@
 package Entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "member")
-public class Member  {
+public class Member {
     @Id
-    @Column(name = "idMember", nullable = false)
+    @Column(name = "idmember", nullable = false)
     private Integer id;
 
-    @Column(name = "turnNum")
-    private Integer turnNum;
+    @Column(name = "turnNumber")
+    private Integer turnNumber;
 
-    public Integer getTurnNum() {
-        return turnNum;
+    @ManyToOne
+    @JoinColumn(name = "username")
+    private User username;
+
+    @ManyToOne
+    @JoinColumn(name = "kametiId")
+    private Kameti kametiId;
+
+    public Kameti getKametiId() {
+        return kametiId;
     }
 
-    public void setTurnNum(Integer turnNum) {
-        this.turnNum = turnNum;
+    public void setKametiId(Kameti kametiId) {
+        this.kametiId = kametiId;
+    }
+
+    public User getUsername() {
+        return username;
+    }
+
+    public void setUsername(User username) {
+        this.username = username;
+    }
+
+    public Integer getTurnNumber() {
+        return turnNumber;
+    }
+
+    public void setTurnNumber(Integer turnNumber) {
+        this.turnNumber = turnNumber;
     }
 
     public Integer getId() {
