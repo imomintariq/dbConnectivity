@@ -23,7 +23,7 @@ public class Main extends Application{
 /*        KametiManagementSystem kms = new KametiManagementSystem();
         kms.retrieveKametis();*/
         stg = stage;
-        String fxmlPath = "DashBoard.fxml";
+        String fxmlPath = "LogIn.fxml";
         URL url = getClass().getClassLoader().getResource(fxmlPath);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
         Scene scene = new Scene(fxmlLoader.load(), 630, 450);

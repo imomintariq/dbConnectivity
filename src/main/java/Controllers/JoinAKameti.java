@@ -54,10 +54,13 @@ public class JoinAKameti {
 
     @FXML
     void publicKametiButtonClicked(MouseEvent event) {
-
-        System.out.println("Public Kameti Button Clicked !!!");
-
-        System.out.println("Private Kameti Button Clicked !!!");
+        Main main = new Main();
+        try {
+            main.changeScene("PublicKametis.fxml");
+        }
+        catch(Exception e){
+            System.out.println("Public Kameti Lists Page not Loaded");
+        }
     }
 
 }
