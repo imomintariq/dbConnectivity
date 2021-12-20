@@ -23,10 +23,10 @@ public class SignUp {
     private TextField email;
 
     @FXML
-    private TextField firstname;
+    private TextField firstName;
 
     @FXML
-    private TextField lastname;
+    private TextField lastName;
 
     @FXML
     private PasswordField password;
@@ -58,16 +58,24 @@ public class SignUp {
         String _password = password.getText();
         String _email = email.getText();
         String _cnic = cnic.getText();
-        String _firstName = firstname.getText();
-        String _lastName = lastname.getText();
+        String _firstName = firstName.getText();
+        String _lastName = lastName.getText();
         String _phoneNumber = phoneNumber.getText();
         String _confirmedPassword = confirmPassword.getText();
+
         if (_password.equals(_confirmedPassword)) {
             KametiManagementSystem kms = new KametiManagementSystem();
             kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword);
         }
 
+        Main main = new Main();
+        try {
+            main.changeScene("LogIn.fxml");
+        } catch (Exception e) {
+            System.out.println("Log In Page not Loaded");
         }
+
+    }
 
 
 }
