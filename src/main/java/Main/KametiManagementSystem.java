@@ -38,7 +38,8 @@ public class KametiManagementSystem {
         trans.commit();
 
     }
-    public boolean LogIn(String Username, String Passowrd) {
+
+    public boolean LogIn(String Username, String Password) {
 
         Configuration con = new Configuration();
         con.configure().addAnnotatedClass(User.class);
@@ -46,13 +47,21 @@ public class KametiManagementSystem {
         SessionFactory sf= con.buildSessionFactory();
         Session session= sf.openSession();
         Transaction trans= session.beginTransaction();
-    List<User> UserList = session.createQuery("FROM User").getResultList();
 
-            for(int i=0;i<UserList.size();i++)
-            {
+        List<User> UserList = session.createQuery("FROM User").getResultList();
+
+            for(int i=0;i<UserList.size();i++) {
                 System.out.println(UserList.get(i).getId());
                 System.out.println(UserList.get(i).getPassword());
-            }  return true;
+
+                if(UserList.get(i).getId().equals(Username) && UserList.get(i).getPassword().equals(Password)){
+                    System.out.println("found");
+                    return true;
+                }
+            }
+
+            System.out.println("not found");
+            return false;
     }
 
     public void AddAKameti(String KametiName, String KametiFrequency, String Rule1, String Rule2, String Rule3, String Rule4, String Rule5, String isPrivate, int KametiPayout, LocalDate LC,int kametiDuration)
