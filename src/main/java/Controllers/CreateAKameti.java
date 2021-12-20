@@ -100,7 +100,7 @@ public class CreateAKameti implements Initializable {
                 isPrivateCheck.getText(),
                 Integer.parseInt(kametiPayoutField.getText()), DatePickerNote.getValue(),Integer.parseInt(kametiDurationField.getText()));
         //WRITING INTO FILE
-        FileWriter Fr = new FileWriter("C:\\Users\\AVM Noor Abbas\\Desktop\\Users.txt",true );
+        FileWriter Fr = new FileWriter("Kametis.txt",true );
         BufferedWriter br = new BufferedWriter(Fr);
         String toWrite ="";
         toWrite += kametiNameField.getText();
