@@ -76,9 +76,16 @@ public class KametiManagementSystem {
         K.setIsPrivate(isPrivate);
         K.setTotalPayout(KametiPayout);
         K.setStartDate(LC);
-        K.setTotalMembers(10);
-        K.setIndivisualShare(1000);
-        K.setId(1);
+
+        if(KametiFrequency.equals("Monthly")){
+            K.setTotalMembers(kametiDuration);
+            System.out.println("Kameti members = " + K.getTotalMembers());
+        }
+        else if(KametiFrequency.equals("After 15 Days")){
+            K.setTotalMembers(kametiDuration * 2);
+            System.out.println("Kameti members = " + K.getTotalMembers());
+        }
+        K.setIndivisualShare(KametiPayout/kametiDuration);
         session.save(K);
         trans.commit();
 
