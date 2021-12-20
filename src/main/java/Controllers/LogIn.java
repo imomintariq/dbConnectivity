@@ -40,7 +40,7 @@ public class LogIn {
             main.changeScene("SignUp.fxml");
         }
         catch(Exception e){
-            System.out.println("Log In Page not Loaded");
+            System.out.println("Sign Up Page not Loaded");
         }
     }
 

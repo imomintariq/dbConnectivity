@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SignUp">
+   <top>
+      <VBox BorderPane.alignment="CENTER" />
+   </top>
+   <right>
+      <VBox prefHeight="358.0" prefWidth="413.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="331.0" prefWidth="469.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" />
+                  <TextField fx:id="firstName" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" />
+                  <TextField fx:id="lastName" prefHeight="25.0" prefWidth="477.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" />
+                  <TextField fx:id="username" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
+                  <PasswordField fx:id="password" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password:" />
+                  <PasswordField fx:id="confirmPassword" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CNIC:" />
+                  <TextField fx:id="cnic" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number:" />
+                  <TextField fx:id="phoneNumber" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" />
+                  <TextField fx:id="email" />
+                  <Button fx:id="registerButton" mnemonicParsing="false" onMouseClicked="#registerButtonClicked" prefHeight="25.0" prefWidth="298.0" text="Register" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="backButton" mnemonicParsing="false" onMouseClicked="#backButtonClicked" prefHeight="21.0" prefWidth="287.0" text="Back" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </right>
+   <left>
+      <ImageView fitHeight="337.0" fitWidth="397.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@images/sideImage.jpg" />
+         </image>
+      </ImageView>
+   </left>
+</BorderPane>

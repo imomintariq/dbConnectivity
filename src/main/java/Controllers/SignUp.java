@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class SignUp {
+
     @FXML
     private Button backButton;
 
@@ -40,7 +41,18 @@ public class SignUp {
     private TextField username;
 
     @FXML
-    void registerButtonClicked(MouseEvent event) {
+    void backButtonClicked(MouseEvent event) {
+        Main main = new Main();
+        try {
+            main.changeScene("LogIn.fxml");
+        }
+        catch(Exception e){
+            System.out.println("Sign Up Page not Loaded");
+        }
+    }
+
+    @FXML
+    void registerButtonClickeds(MouseEvent event) {
         KametiManagementSystem kms = new KametiManagementSystem();
         String _username = username.getText();
         String _password = password.getText();
@@ -52,14 +64,6 @@ public class SignUp {
         String _confirmedPassword = confirmPassword.getText();
         kms.registerAUser(_username,_password,_email,_cnic,_firstName,_lastName,_phoneNumber,_confirmedPassword);
     }
-    @FXML
-    void backButtonClicked(MouseEvent event) {
-        Main main = new Main();
-        try {
-            main.changeScene("LogIn.fxml");
-        }
-        catch(Exception e){
-            System.out.println("Sign Up Page not Loaded");
-        }
-    }
+
 }
+
