@@ -38,7 +38,7 @@ public class KametiManagementSystem {
         trans.commit();
 
     }
-    public boolean LogIn(String Username, String Passowrd) {
+    public boolean LogIn(String Username, String Password) {
 
         Configuration con = new Configuration();
         con.configure().addAnnotatedClass(User.class);
@@ -52,10 +52,15 @@ public class KametiManagementSystem {
             {
                 System.out.println(UserList.get(i).getId());
                 System.out.println(UserList.get(i).getPassword());
-            }  return true;
+                if(Username.equals(UserList.get(i).getId()) && Password.equals(UserList.get(i).getPassword()))
+                {
+                    return true;
+                }
+            }
+            return false;
     }
 
-    public void AddAKameti(String KametiName, String KametiFrequency, String Rule1, String Rule2, String Rule3, String Rule4, String Rule5, String isPrivate, int KametiPayout, LocalDate LC,int kametiDuration)
+    public void AddAKameti(String KametiName, String frequency, String Rule1, String Rule2, String Rule3, String Rule4, String Rule5, String isPrivate, int KametiPayout, LocalDate LC,int kametiDuration)
     {
         Configuration con = new Configuration();
         con.configure().addAnnotatedClass(Kameti.class);
@@ -67,7 +72,7 @@ public class KametiManagementSystem {
         //SETTING VALUES
         K.setKametiName(KametiName);
         K.setKametiDuration(kametiDuration);
-        K.setFrequency(KametiFrequency);
+        K.setFrequency(frequency);
         K.setRule1(Rule1);
         K.setRule2(Rule2);
         K.setRule3(Rule3);
@@ -88,6 +93,7 @@ public class KametiManagementSystem {
         K.setIndivisualShare(KametiPayout/kametiDuration);
         session.save(K);
         trans.commit();
+        System.out.println(Rule1 + Rule2 + Rule3 + Rule4 + Rule5);
 
     }
 }

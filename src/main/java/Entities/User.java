@@ -30,6 +30,13 @@ public class User {
     @Column(name = "phoneNumber", nullable = false, length = 45)
     private String phoneNumber;
 
+    public User() {}
+
+    public User(String id, String password) {
+        this.id = id;
+        this.password = password;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
