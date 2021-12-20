@@ -50,7 +50,6 @@
                   <Image url="@images/sideImage.jpg" />
                </image>
             </ImageView>
-            <Text fx:id="incorrectDetailsText" layoutX="371.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" />
             <Label fx:id="incorrectTextLabel" layoutX="371.0" layoutY="315.0" />
          </children>
       </Pane>

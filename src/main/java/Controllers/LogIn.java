@@ -24,7 +24,7 @@ public class LogIn {
     private TextField username;
 
     @FXML
-    private static Label incorrectTextLabel;
+    private Label incorrectTextLabel;
     @FXML
     void SignInButtonClicked(MouseEvent event) {
         KametiManagementSystem kms = new KametiManagementSystem();
@@ -47,7 +47,7 @@ public class LogIn {
         }
     }
         @FXML
-    static void checkLogin(boolean flag) throws LogInException
+     void checkLogin(boolean flag) throws LogInException
         {
             if (flag == true) {
                 Main main = new Main();
@@ -59,6 +59,7 @@ public class LogIn {
             } else {
                 System.out.println("Incorrect Username or Password");
                 incorrectTextLabel.setText("Incorrect Username or Password");
+                incorrectTextLabel.setVisible(true);
             }
 
         }
