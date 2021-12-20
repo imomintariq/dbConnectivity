@@ -1,3 +1,4 @@
+
 package Controllers;
 
 import Main.KametiManagementSystem;
@@ -9,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class SignUp {
-
 
     @FXML
     private Button backButton;
@@ -53,8 +53,7 @@ public class SignUp {
 
     @FXML
     void registerButtonClicked(MouseEvent event) {
-
-        String _username = username.getText();
+            String _username = username.getText();
         String _password = password.getText();
         String _email = email.getText();
         String _cnic = cnic.getText();
@@ -66,19 +65,76 @@ public class SignUp {
             KametiManagementSystem kms = new KametiManagementSystem();
             kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword);
         }
-
-
-        Main main = new Main();
-        try {
-            main.changeScene("LogIn.fxml");
-        } catch (Exception e) {
-            System.out.println("Log In Page not Loaded");
         }
-
 
     }
 
 
 
+        //package Controllers;
+//
 
-}
+//
+//public class SignUp {
+//
+//    @FXML
+//    private Button backButton;
+//
+//    @FXML
+//    private TextField cnic;
+//
+//    @FXML
+//    private PasswordField confirmPassword;
+//
+//    @FXML
+//    private TextField email;
+//
+//    @FXML
+//    private TextField firstname;
+//
+//    @FXML
+//    private TextField lastname;
+//
+//    @FXML
+//    private PasswordField password;
+//
+//    @FXML
+//    private TextField phoneNumber;
+//
+//    @FXML
+//    private Button registerButton;
+//
+//    @FXML
+//    private TextField username;
+//
+//
+//    @FXML
+//    void backButtonClicked(MouseEvent event) {
+//        Main main = new Main();
+//        try {
+//            main.changeScene("LogIn.fxml");
+//        } catch (Exception e) {
+//            System.out.println("Log In Page not Loaded");
+//        }
+//    }
+//
+//    @FXML
+//    void registerButtonClicked(MouseEvent event) {
+//
+//        String _username = username.getText();
+//        String _password = password.getText();
+//        String _email = email.getText();
+//        String _cnic = cnic.getText();
+//        String _firstName = firstname.getText();
+//        String _lastName = lastname.getText();
+//        String _phoneNumber = phoneNumber.getText();
+//        String _confirmedPassword = confirmPassword.getText();
+//        if (_password.equals(_confirmedPassword)) {
+//            KametiManagementSystem kms = new KametiManagementSystem();
+//            kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword);
+//        }
+//
+//        }
+//
+//
+//}
