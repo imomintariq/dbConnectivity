@@ -46,7 +46,7 @@ public class KametiManagementSystem {
         SessionFactory sf= con.buildSessionFactory();
         Session session= sf.openSession();
         Transaction trans= session.beginTransaction();
-    List<User> UserList = session.createQuery("FROM User").getResultList();
+        List<User> UserList = session.createQuery("FROM User").getResultList();
 
             for(int i=0;i<UserList.size();i++)
             {
@@ -58,7 +58,7 @@ public class KametiManagementSystem {
     public void AddAKameti(String KametiName, String KametiFrequency, String Rule1, String Rule2, String Rule3, String Rule4, String Rule5, String isPrivate, int KametiPayout, LocalDate LC,int kametiDuration)
     {
         Configuration con = new Configuration();
-        con.configure().addAnnotatedClass(User.class);
+        con.configure().addAnnotatedClass(Kameti.class);
 
         SessionFactory sf = con.buildSessionFactory();
         Session session = sf.openSession();
@@ -79,6 +79,7 @@ public class KametiManagementSystem {
         K.setTotalMembers(10);
         K.setIndivisualShare(1000);
         K.setId(1);
+        session.save(K);
         trans.commit();
 
     }
