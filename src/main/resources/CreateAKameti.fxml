@@ -4,27 +4,91 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="823.0" style="-fx-background-color: #FBAF3E;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CreateAKameti">
+<AnchorPane prefHeight="450.0" prefWidth="630.0" style="-fx-background-color: EDCFB7;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CreateAKameti">
     <children>
-        <TextField fx:id="kametiPayoutField" layoutX="48.0" layoutY="109.0" promptText="Enter the total Payout" />
-        <TextArea layoutX="-62.0" layoutY="-122.0" prefHeight="37.0" prefWidth="21.0" />
-        <TextField fx:id="kametiNameField" layoutX="48.0" layoutY="48.0" promptText="Enter the Kameti Name" />
-        <TextField fx:id="kametiDurationField" layoutX="49.0" layoutY="166.0" promptText="Enter Kameti Duration" />
-        <CheckBox fx:id="isPrivateCheck" layoutX="269.0" layoutY="61.0" mnemonicParsing="false" text="Should the Kameti be private" />
-        <CheckBox fx:id="rule5Check" layoutX="269.0" layoutY="186.0" mnemonicParsing="false" text="All and any disputes will be managed by the Kameti Head" />
-        <CheckBox fx:id="rule1Check" layoutX="269.0" layoutY="83.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="377.0" text="The payment of share needs to be made by the 15th of every month" />
-        <CheckBox fx:id="rule2Check" layoutX="269.0" layoutY="109.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="431.0" text="Kameti head has the right to accept or reject user(s) from joining the Kameti" />
-        <CheckBox fx:id="rule3Check" layoutX="269.0" layoutY="134.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="535.0" text="Kameti Head has the right to accept or reject request of the Kameti members to make payments" />
-        <CheckBox fx:id="rule4Check" layoutX="269.0" layoutY="161.0" mnemonicParsing="false" text="Payments slots and order will be decided upon the descrition of the Kameti Head" />
-        <Button fx:id="submitButton" layoutX="269.0" layoutY="225.0" mnemonicParsing="false" onMouseClicked="#submitButtonClicked" prefHeight="25.0" prefWidth="251.0" text="Submit" />
-        <Button fx:id="backButton" layoutX="269.0" layoutY="271.0" mnemonicParsing="false" onMouseClicked="#backButtonClicked" prefHeight="25.0" prefWidth="120.0" text="Back" />
-        <DatePicker fx:id="DatePickerNote" layoutX="48.0" layoutY="225.0" onAction="#onDatePicked" prefHeight="25.0" prefWidth="149.0" promptText="Starting Date" />
-      <ChoiceBox fx:id="kametiFrquency" layoutX="48.0" layoutY="296.0" prefWidth="150.0" />
-      <Text layoutX="49.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payout Frequency:" />
+      <Pane prefHeight="450.0" prefWidth="630.0">
+         <children>
+            <ImageView fitHeight="534.0" fitWidth="630.0" layoutY="-10.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/kameti.jpeg" />
+               </image>
+            </ImageView>
+              <TextField fx:id="kametiPayoutField" layoutX="150.0" layoutY="163.0" prefHeight="34.0" prefWidth="156.0" promptText="Kameti Amount">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </TextField>
+              <TextField fx:id="kametiNameField" layoutX="150.0" layoutY="63.0" prefHeight="34.0" prefWidth="332.0" promptText="Kameti Name">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </TextField>
+              <TextField fx:id="kametiDurationField" layoutX="150.0" layoutY="113.0" prefHeight="34.0" prefWidth="156.0" promptText="Kameti Duration">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </TextField>
+              <CheckBox fx:id="isPrivateCheck" layoutX="140.0" layoutY="218.0" mnemonicParsing="false" text="Private Kameti">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </CheckBox>
+              <CheckBox fx:id="rule5Check" layoutX="140.0" layoutY="242.0" mnemonicParsing="false" text="Kameti Head will manage any/all disputes.">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </CheckBox>
+              <CheckBox fx:id="rule1Check" layoutX="140.0" layoutY="266.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="409.0" text="Shares to be deposited on the 15th of every month.">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </CheckBox>
+              <CheckBox fx:id="rule2Check" layoutX="140.0" layoutY="290.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="431.0" text="Kameti Head can accept/reject requests to join Kameti.">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </CheckBox>
+              <CheckBox fx:id="rule3Check" layoutX="140.0" layoutY="314.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="535.0" text="Kameti Head can accept/reject requests to pay/receive payments.">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </CheckBox>
+              <CheckBox fx:id="rule4Check" layoutX="140.0" layoutY="338.0" mnemonicParsing="false" text="Kameti Head will approve duration and amount of Kameti.">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </CheckBox>
+              <Button fx:id="submitButton" layoutX="354.0" layoutY="389.0" mnemonicParsing="false" onMouseClicked="#submitButtonClicked" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: E3482D;" text="Create Kameti" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+              <Button fx:id="backButton" layoutX="141.0" layoutY="389.0" mnemonicParsing="false" onMouseClicked="#backButtonClicked" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: E3482D;" text="Back to Dashboard" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+              <DatePicker fx:id="DatePickerNote" layoutX="326.0" layoutY="113.0" onAction="#onDatePicked" prefHeight="34.0" prefWidth="156.0" promptText="Starting Date" />
+            <ChoiceBox fx:id="kametiFrquency" layoutX="325.0" layoutY="172.0" prefHeight="25.0" prefWidth="156.0" />
+            <Text layoutX="327.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payout Frequency:">
+               <font>
+                  <Font name="Arial" size="11.0" />
+               </font>
+            </Text>
+            <Text fill="#c1121c" layoutX="195.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Your Own Kameti">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
     </children>
 </AnchorPane>
