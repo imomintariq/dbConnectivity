@@ -21,6 +21,13 @@ public class DashBoard {
     @FXML
     void createKametiButtonClicked(MouseEvent event)
     {
+        Main main = new Main();
+        try {
+            main.changeScene("CreateAKameti.fxml");
+        }
+        catch(Exception e){
+            System.out.println("Log In Page not Loaded");
+        }
 
     }
 

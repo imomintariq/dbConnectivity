@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class KametiManagementSystem {
@@ -51,5 +52,8 @@ public class KametiManagementSystem {
                 System.out.println(UserList.get(i).getId());
                 System.out.println(UserList.get(i).getPassword());
             }  return true;
+    }
+
+    public void AddAKameti(String kametiName, String kametiPaymentFrequency, String rule1, String rule2, String rule3, String rule4, String rule5, String isPrivate, int payout, LocalDate lc, int kametiDuration) {
     }
 }
