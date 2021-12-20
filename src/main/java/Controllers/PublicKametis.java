@@ -14,29 +14,40 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.StringTokenizer;
 
 public class PublicKametis implements Initializable {
 
     @FXML
     private ListView<String> kametiList = new ListView<String>();
 
-    private Kameti selectedKameti;
+    private String selectedRow;
+    private ArrayList<String> selectedKameti;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
+        selectedKameti = new ArrayList<>();
         KametiManagementSystem kms = new KametiManagementSystem();
         ArrayList<String> k = kms.retrieveKametis();
         kametiList.getItems().addAll(k);
-/*        kametiList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+        kametiList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
 
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                selectedKameti = kametiList.getSelectionModel().getSelectedIndex();//getting current selection
+                selectedRow = kametiList.getSelectionModel().getSelectedItem();//getting current selection
 
-                System.out.println(currentCandidate);
+                selectedKameti.clear();
+                StringTokenizer st = new StringTokenizer(selectedRow," ");
+                while (st.hasMoreTokens()) {
+                    selectedKameti.add(st.nextToken());
+                }
+                System.out.println("Selected kameti Name = " + selectedKameti.get(0) + ".");
+
+                //System.out.println(currentCandidate);
 
             }
-        });*/
+        });
     }
 
     @FXML
