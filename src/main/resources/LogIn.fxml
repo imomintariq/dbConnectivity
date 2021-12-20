@@ -16,7 +16,7 @@
    <children>
       <Pane prefHeight="450.0" prefWidth="630.0">
          <children>
-            <Button fx:id="signInButton" layoutX="457.0" layoutY="339.0" mnemonicParsing="false" onMouseClicked="#SignInButtonClicked" prefHeight="27.0" prefWidth="62.0" style="-fx-background-color: E3482D;" text="Sign In" textFill="WHITE">
+            <Button fx:id="signInButton" layoutX="415.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#SignInButtonClicked" prefHeight="27.0" prefWidth="62.0" style="-fx-background-color: E3482D;" text="Sign In" textFill="WHITE">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>

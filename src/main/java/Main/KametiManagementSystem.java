@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KametiManagementSystem {
+
     public ArrayList<String> retrieveKametis() {
 
         Configuration con = new Configuration();
@@ -28,12 +29,13 @@ public class KametiManagementSystem {
             System.out.println(kametiList.get(i).getKametiName());
             System.out.println(kametiList.get(i).getKametiDuration());
             System.out.println(kametiList.get(i).getTotalPayout());
-            kametiStringList.add(kametiList.get(i).getKametiName() + "          " +kametiList.get(i).getKametiDuration() + kametiList.get(i).getTotalPayout());
+            kametiStringList.add(kametiList.get(i).getKametiName() + "          " +kametiList.get(i).getKametiDuration() + "          " + kametiList.get(i).getTotalPayout());
 
         }
         return kametiStringList;
 
     }
+
     public void registerAUser(String username, String password, String email, String cnic, String firstName, String lastName, String phoneNumber, String confirmedPassword) {
 
         Configuration con = new Configuration();
@@ -60,6 +62,7 @@ public class KametiManagementSystem {
         trans.commit();
 
     }
+
     public boolean LogIn(String Username, String Password) {
 
         Configuration con = new Configuration();
@@ -82,8 +85,7 @@ public class KametiManagementSystem {
             return false;
     }
 
-    public void AddAKameti(String KametiName, String frequency, String Rule1, String Rule2, String Rule3, String Rule4, String Rule5, String isPrivate, int KametiPayout, LocalDate LC,int kametiDuration)
-    {
+    public void AddAKameti(String KametiName, String frequency, String Rule1, String Rule2, String Rule3, String Rule4, String Rule5, String isPrivate, int KametiPayout, LocalDate LC,int kametiDuration) {
         Configuration con = new Configuration();
         con.configure().addAnnotatedClass(Kameti.class);
 
@@ -111,4 +113,27 @@ public class KametiManagementSystem {
         System.out.println(Rule1 + Rule2 + Rule3 + Rule4 + Rule5);
 
     }
+
+    public boolean checkUser(String username) {
+
+        Configuration con = new Configuration();
+        con.configure().addAnnotatedClass(Kameti.class);
+
+        SessionFactory sf= con.buildSessionFactory();
+        Session session= sf.openSession();
+        Transaction trans= session.beginTransaction();
+        List<User> UserList = session.createQuery("FROM User").getResultList();
+
+        boolean found = false;
+
+        for(int i=0;i<UserList.size();i++) {
+           if(UserList.get(i).getId().equals(username)){
+               return true;
+           }
+        }
+
+        return false;
+
+    }
+
 }

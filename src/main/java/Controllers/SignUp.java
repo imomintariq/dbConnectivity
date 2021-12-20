@@ -53,7 +53,6 @@ public class SignUp {
 
     @FXML
     void registerButtonClicked(MouseEvent event) {
-
         String _username = username.getText();
         String _password = password.getText();
         String _email = email.getText();

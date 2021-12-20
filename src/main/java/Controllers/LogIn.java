@@ -25,6 +25,7 @@ public class LogIn {
 
     @FXML
     private Label incorrectTextLabel;
+
     @FXML
     void SignInButtonClicked(MouseEvent event) {
         KametiManagementSystem kms = new KametiManagementSystem();
@@ -36,6 +37,7 @@ public class LogIn {
         }
 
     }
+
     @FXML
     void signUpButtonClicked(MouseEvent event) {
         Main main = new Main();
