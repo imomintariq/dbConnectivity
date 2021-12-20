@@ -105,11 +105,11 @@ public class CreateAKameti {
         }
         String KametiName = kametiNameField.getText();
         int KametiDuration = Integer.valueOf(kametiDurationField.getText());
-        String KametiPaymentFrequency = kametiFrquencyField.getText();
+        //String KametiPaymentFrequency = kametiFrquencyField.getText();
         LocalDate LC = DatePickerNote.getValue();
         int Payout = Integer.valueOf(kametiPayoutField.getText());
         KametiManagementSystem kms = new KametiManagementSystem();
-        kms.AddAKameti(KametiName,KametiPaymentFrequency,Rule1,Rule2,Rule3,Rule4,Rule5,isPrivate,Payout,LC,KametiDuration);
+        kms.AddAKameti(KametiName/*KametiPaymentFrequency*/,Rule1,Rule2,Rule3,Rule4,Rule5,isPrivate,Payout,LC,KametiDuration);
     }
 
     public void onDatePicked(ActionEvent actionEvent) {
