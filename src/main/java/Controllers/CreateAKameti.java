@@ -62,7 +62,13 @@ public class CreateAKameti implements Initializable {
 
     @FXML
     void backButtonClicked(MouseEvent event) {
-
+        Main main = new Main();
+        try {
+            main.changeScene("DashBoard.fxml");
+        }
+        catch(Exception e){
+            System.out.println("Dash Board Page not Loaded");
+        }
     }
 
     @FXML
@@ -91,12 +97,13 @@ public class CreateAKameti implements Initializable {
                 isPrivateCheck.getText(),
                 Integer.parseInt(kametiPayoutField.getText()), DatePickerNote.getValue(),Integer.parseInt(kametiDurationField.getText()));
 
-        /*if(kametiDurationField.getText()!=null && kametiPayoutField.getText()!=null){
-            //System.out.println("Are not null");
+        Main main = new Main();
+        try {
+            main.changeScene("DashBoard.fxml");
         }
-        else{
-            System.out.println("Either one or both are null");
-        }*/
+        catch(Exception e){
+            System.out.println("Dash Board Page not Loaded");
+        }
 
     }
 
@@ -106,7 +113,7 @@ public class CreateAKameti implements Initializable {
 
         ArrayList<String> freqList = new ArrayList<>();
         freqList.add("Monthly");
-        freqList.add("Weekly");
+        freqList.add("After 15 Days");
         ObservableList<String> observableList = FXCollections.observableArrayList(freqList);
 
         kametiFrquency.setItems(observableList);

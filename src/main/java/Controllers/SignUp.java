@@ -40,6 +40,7 @@ public class SignUp {
     @FXML
     private TextField username;
 
+
     @FXML
     void backButtonClicked(MouseEvent event) {
         Main main = new Main();
