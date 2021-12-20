@@ -9,6 +9,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+import java.io.*;
+
 public class SignUp {
 
     @FXML
@@ -52,7 +54,7 @@ public class SignUp {
     }
 
     @FXML
-    void registerButtonClicked(MouseEvent event) {
+    void registerButtonClicked(MouseEvent event) throws IOException {
             String _username = username.getText();
         String _password = password.getText();
         String _email = email.getText();
@@ -64,6 +66,28 @@ public class SignUp {
         if (_password.equals(_confirmedPassword)) {
             KametiManagementSystem kms = new KametiManagementSystem();
             kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword);
+            FileWriter Fr = new FileWriter("C:\\Users\\AVM Noor Abbas\\Desktop\\Users.txt",true );
+            BufferedWriter br = new BufferedWriter(Fr);
+            String toWrite ="";
+            toWrite += _username;
+            toWrite += "  -  ";
+            toWrite += _password;
+            toWrite += "  -  ";
+            toWrite += _email;
+            toWrite += "  -  ";
+            toWrite += _cnic;
+            toWrite += "  -  ";
+            toWrite += _firstName;
+            toWrite += "  -  ";
+            toWrite += _lastName;
+            toWrite += "  -  ";
+            toWrite += _phoneNumber;
+            toWrite += "  -  ";
+            toWrite += _confirmedPassword;
+            toWrite += "  -  ";
+            br.write(toWrite);
+            br.newLine();
+            br.close();
         }
         }
 

@@ -12,6 +12,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -77,7 +80,7 @@ public class CreateAKameti implements Initializable {
     }
 
     @FXML
-    void submitButtonClicked(MouseEvent event) {
+    void submitButtonClicked(MouseEvent event) throws IOException {
         KametiManagementSystem kms = new KametiManagementSystem();
         System.out.println("Name = " + kametiNameField.getText());
         System.out.println("frequency = " + frequency);
@@ -96,6 +99,38 @@ public class CreateAKameti implements Initializable {
                 String.valueOf(rule5Check.isSelected()),
                 isPrivateCheck.getText(),
                 Integer.parseInt(kametiPayoutField.getText()), DatePickerNote.getValue(),Integer.parseInt(kametiDurationField.getText()));
+        //WRITING INTO FILE
+        FileWriter Fr = new FileWriter("C:\\Users\\AVM Noor Abbas\\Desktop\\Users.txt",true );
+        BufferedWriter br = new BufferedWriter(Fr);
+        String toWrite ="";
+        toWrite += kametiNameField.getText();
+        toWrite += "  -  ";
+        toWrite += kametiPayoutField.getText();
+        toWrite += "  -  ";
+        toWrite +=  String.valueOf(rule1Check.isSelected());
+        toWrite += "  -  ";
+        toWrite += String.valueOf(rule2Check.isSelected());
+        toWrite += "  -  ";
+        toWrite += String.valueOf(rule3Check.isSelected());
+        toWrite += "  -  ";
+        toWrite += String.valueOf(rule4Check.isSelected());
+        toWrite += "  -  ";
+        toWrite += String.valueOf(rule5Check.isSelected());
+        toWrite += "  -  ";
+        toWrite += frequency;
+        toWrite += "  -  ";
+        toWrite+= isPrivateCheck.getText();
+        toWrite += "  -  ";
+        toWrite += kametiDurationField.getText();
+        toWrite += "  -  ";
+        toWrite+= isPrivateCheck.getText();
+        toWrite += "  -  ";
+        toWrite += String.valueOf((DatePickerNote.getValue()));
+        toWrite += "  -  ";
+        ////
+        br.write(toWrite);
+        br.newLine();
+        br.close();
 
         Main main = new Main();
         try {

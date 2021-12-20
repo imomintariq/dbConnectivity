@@ -105,7 +105,7 @@ public class KametiManagementSystem {
         K.setStartDate(LC);
         K.setTotalMembers(10);
         K.setIndivisualShare(1000);
-        K.setId(1);
+        K.setId(5);
         session.save(K);
         trans.commit();
         System.out.println(Rule1 + Rule2 + Rule3 + Rule4 + Rule5);
