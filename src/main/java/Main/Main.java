@@ -24,8 +24,8 @@ public class Main extends Application{
         String fxmlPath = "LogIn.fxml";
         URL url = getClass().getClassLoader().getResource(fxmlPath);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
-        Scene scene = new Scene(fxmlLoader.load(), 700, 400);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(fxmlLoader.load(), 630, 450);
+        stage.setTitle("myKameti");
         stage.setScene(scene);
         stage.show();
     }
