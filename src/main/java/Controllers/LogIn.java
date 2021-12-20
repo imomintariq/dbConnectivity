@@ -22,6 +22,9 @@ public class LogIn {
 
     @FXML
     void SignInButtonClicked(MouseEvent event) {
+
+
+
         Main main = new Main();
         KametiManagementSystem kms = new KametiManagementSystem();
         kms.LogIn(username.getText(),password.getText());
