@@ -24,15 +24,18 @@ public class LogIn {
     void SignInButtonClicked(MouseEvent event) {
 
 
-
         Main main = new Main();
         KametiManagementSystem kms = new KametiManagementSystem();
-        kms.LogIn(username.getText(),password.getText());
-        try {
-            main.changeScene("DashBoard.fxml");
-        }
-        catch(Exception e){
-            System.out.println("Log In Page not Loaded");
+        boolean logIn = kms.LogIn(username.getText(), password.getText());
+        if (logIn == true) {
+
+            try {
+                main.changeScene("DashBoard.fxml");
+            } catch (Exception e) {
+                System.out.println("Log In Page not Loaded");
+            }
+        } else {
+            System.out.println("Incorrect Username or Password");
         }
     }
 

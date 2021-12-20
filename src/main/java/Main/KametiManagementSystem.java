@@ -60,7 +60,7 @@ public class KametiManagementSystem {
             return false;
     }
 
-    public void AddAKameti(String KametiName, String Rule1, String Rule2, String Rule3, String Rule4, String Rule5, String isPrivate, int KametiPayout, LocalDate LC,int kametiDuration)
+    public void AddAKameti(String KametiName, String frequency, String Rule1, String Rule2, String Rule3, String Rule4, String Rule5, String isPrivate, int KametiPayout, LocalDate LC,int kametiDuration)
     {
         Configuration con = new Configuration();
         con.configure().addAnnotatedClass(Kameti.class);
@@ -72,7 +72,7 @@ public class KametiManagementSystem {
         //SETTING VALUES
         K.setKametiName(KametiName);
         K.setKametiDuration(kametiDuration);
-       // K.setFrequency(KametiFrequency);
+        K.setFrequency(frequency);
         K.setRule1(Rule1);
         K.setRule2(Rule2);
         K.setRule3(Rule3);
