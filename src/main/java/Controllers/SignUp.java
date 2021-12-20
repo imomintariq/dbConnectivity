@@ -52,7 +52,16 @@ public class SignUp {
     }
 
     @FXML
-    void registerButtonClickeds(MouseEvent event) {
+    void registerButtonClicked(MouseEvent event) {
+
+        Main main = new Main();
+        try {
+            main.changeScene("LogIn.fxml");
+        }
+        catch(Exception e){
+            System.out.println("Sign In Page not Loaded");
+        }
+
         KametiManagementSystem kms = new KametiManagementSystem();
         String _username = username.getText();
         String _password = password.getText();

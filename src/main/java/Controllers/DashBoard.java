@@ -8,9 +8,13 @@ import javafx.scene.input.MouseEvent;
 public class DashBoard {
 
     @FXML
-    private Button dashBoardBackButton;
-    @FXML
     private Button createKametiButton;
+
+    @FXML
+    private Button dashBoardBackButton;
+
+    @FXML
+    private Button helpButton;
 
     @FXML
     private Button joinKametiButton;
@@ -26,7 +30,7 @@ public class DashBoard {
             main.changeScene("CreateAKameti.fxml");
         }
         catch(Exception e){
-            System.out.println("Log In Page not Loaded");
+            System.out.println("Create A Kameti Page not Loaded");
         }
 
     }
@@ -36,10 +40,10 @@ public class DashBoard {
     {
         Main main = new Main();
         try {
-            main.changeScene("KametiTypes.fxml");
+            main.changeScene("JoinAKameti.fxml");
         }
         catch(Exception e){
-            System.out.println("Sign Up Page not Loaded");
+            System.out.println("Join A Kameti Page not Loaded");
         }
     }
 
@@ -47,6 +51,7 @@ public class DashBoard {
     void viewKametisButtonClicked(MouseEvent event) {
 
     }
+
     @FXML
     void dashBoardBackButtonClicked(MouseEvent event) {
         Main main = new Main();
@@ -55,6 +60,17 @@ public class DashBoard {
         }
         catch(Exception e){
             System.out.println("Log In Page not Loaded");
+        }
+    }
+
+    @FXML
+    void helpButtonClicked(MouseEvent event) {
+        Main main = new Main();
+        try {
+            main.changeScene("Help.fxml");
+        }
+        catch(Exception e){
+            System.out.println("Help Page not Loaded");
         }
     }
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane onMouseClicked="#privateKametiButtonClicked" prefHeight="450.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.JoinAKameti">
+   <children>
+      <Pane prefHeight="450.0" prefWidth="630.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faf9f6" height="66.0" layoutY="386.0" stroke="#faf9f6" strokeType="INSIDE" width="630.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faf9f6" height="66.0" layoutY="-1.0" stroke="#faf9f6" strokeType="INSIDE" width="630.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faac3ee8" height="337.0" layoutY="58.0" stroke="#f57738" strokeType="INSIDE" width="311.0" />
+            <Text fill="#c1121c" layoutX="249.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Join A Kameti">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Text>
+            <Button fx:id="privateKametiButton" layoutX="84.0" layoutY="298.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: #2db4a5;" text="Join Now!" textFill="WHITESMOKE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#009d88b5" height="337.0" layoutX="311.0" layoutY="58.0" stroke="#f57738" strokeType="INSIDE" width="319.0" />
+            <Button fx:id="publicKametiButton" layoutX="403.0" layoutY="298.0" mnemonicParsing="false" onMouseClicked="#publicKametiButtonClicked" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: #fbaf3e;" text="Search Kametis" textFill="WHITESMOKE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Text fill="#f5f5f5" layoutX="90.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Private Kameti">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="WHITESMOKE" layoutX="414.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Public Kameti">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="kametiCode" layoutX="60.0" layoutY="177.0" prefHeight="34.0" prefWidth="199.0" promptText="Kameti Code" />
+            <TextField fx:id="kametiName" layoutX="60.0" layoutY="224.0" prefHeight="34.0" prefWidth="199.0" promptText="Kameti Name" />
+            <TextField fx:id="kametiDuration" layoutX="372.0" layoutY="177.0" prefHeight="34.0" prefWidth="199.0" promptText="Kameti Duration" />
+            <TextField fx:id="kametiPayout" layoutX="372.0" layoutY="224.0" prefHeight="34.0" prefWidth="199.0" promptText="Kameti Payout" />
+            <Button fx:id="backButton" layoutX="242.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#backButtonClicked" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: E3482D;" text="Back to Dashboard" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
