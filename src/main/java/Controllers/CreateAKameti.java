@@ -2,20 +2,25 @@ package Controllers;
 
 import Main.KametiManagementSystem;
 import Main.Main;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
+import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class CreateAKameti {
+public class CreateAKameti implements Initializable {
 
     @FXML
-    private TextField YetToDecide;
+    private DatePicker DatePickerNote;
 
     @FXML
     private Button backButton;
@@ -27,7 +32,7 @@ public class CreateAKameti {
     private TextField kametiDurationField;
 
     @FXML
-    private TextField kametiFrquencyField;
+    private ChoiceBox<String> kametiFrquency;
 
     @FXML
     private TextField kametiNameField;
@@ -36,15 +41,10 @@ public class CreateAKameti {
     private TextField kametiPayoutField;
 
     @FXML
-    private TextField kametiStartDateField;
-
-    @FXML
     private CheckBox rule1Check;
 
     @FXML
     private CheckBox rule2Check;
-    @FXML
-    private DatePicker DatePickerNote;
 
     @FXML
     private CheckBox rule3Check;
@@ -58,60 +58,69 @@ public class CreateAKameti {
     @FXML
     private Button submitButton;
 
+    String frequency;
+
     @FXML
     void backButtonClicked(MouseEvent event) {
-        Main main = new Main();
-        try {
-            main.changeScene("DashBoard.fxml");
-        }
-        catch(Exception e){
-            System.out.println("Dash Board Page not Loaded");
-        }
+
+    }
+
+    @FXML
+    void onDatePicked(ActionEvent event) {
+
     }
 
     @FXML
     void submitButtonClicked(MouseEvent event) {
-        //SETTING VALUES TO BE PASSED TO KAMETI MANAGEMENT SYSTEM FOR INSERTION INTO DATAABSE
-        //-----//
-        String Rule1 = "";
-        String Rule2 = "";
-        String  Rule3 = "";
-        String Rule4 = "";
-        String Rule5 = "";
-        String isPrivate = "Public";
-        if (rule1Check.isSelected() == true) {
-            System.out.println("Rule no 1 Checked");
-            Rule1 = "The payment of share needs to be made by the 15th of every month.";
-        }
-        if (rule2Check.isSelected() == true) {
-            System.out.println("Rule no 2 Checked");
-            Rule2 = "Kameti head has the right to accept or reject user(s) from joining the Kameti.";
-        }
-        if (rule3Check.isSelected() ==  true) {
-            System.out.println("Rule no 3 Checked");
-            Rule3 = "Kameti Head has the right to accept or reject request of the Kameti members to make payments.";
-        }
-        if (rule4Check.isSelected() == true) {
-            System.out.println("Rule no 4 Checked");
-            Rule4 = "Payments slots and order will be decided upon the descrition of the Kameti Head.";
-        }
-        if (rule5Check.isSelected() == true) {
-            System.out.println("Rule no 5 Checked");
-            Rule5 = "All and any disputes will be managed by the Kameti Head.";
-        }
-        if(isPrivateCheck.isSelected())
-        {
-            isPrivate = "Private";
-        }
-        String KametiName = kametiNameField.getText();
-        int KametiDuration = Integer.valueOf(kametiDurationField.getText());
-        //String KametiPaymentFrequency = kametiFrquencyField.getText();
-        LocalDate LC = DatePickerNote.getValue();
-        int Payout = Integer.valueOf(kametiPayoutField.getText());
         KametiManagementSystem kms = new KametiManagementSystem();
-        kms.AddAKameti(KametiName/*KametiPaymentFrequency*/,Rule1,Rule2,Rule3,Rule4,Rule5,isPrivate,Payout,LC,KametiDuration);
+        System.out.println("Name = " + kametiNameField.getText());
+        System.out.println("frequency = " + frequency);
+        System.out.println("rule 1 = " + rule1Check.isSelected());
+        System.out.println("Rule 2  = " + rule2Check.isSelected());
+        System.out.println("isPrivate = " + isPrivateCheck.isSelected());
+        System.out.println("payOut = " + Integer.parseInt(kametiPayoutField.getText()));
+        System.out.println("Data = " + DatePickerNote.getValue());
+        System.out.println("Duration = " + Integer.parseInt(kametiDurationField.getText()));
+        kms.AddAKameti(kametiNameField.getText(),
+                frequency,
+                String.valueOf(rule1Check.isSelected()),
+                String.valueOf(rule2Check.isSelected()),
+                String.valueOf(rule3Check.isSelected()),
+                String.valueOf(rule4Check.isSelected()),
+                String.valueOf(rule5Check.isSelected()),
+                isPrivateCheck.getText(),
+                Integer.parseInt(kametiPayoutField.getText()), DatePickerNote.getValue(),Integer.parseInt(kametiDurationField.getText()));
+
+        /*if(kametiDurationField.getText()!=null && kametiPayoutField.getText()!=null){
+            //System.out.println("Are not null");
+        }
+        else{
+            System.out.println("Either one or both are null");
+        }*/
+
     }
 
-    public void onDatePicked(ActionEvent actionEvent) {
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        ArrayList<String> freqList = new ArrayList<>();
+        freqList.add("Monthly");
+        freqList.add("Weekly");
+        ObservableList<String> observableList = FXCollections.observableArrayList(freqList);
+
+        kametiFrquency.setItems(observableList);
+
+        kametiFrquency.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                frequency=kametiFrquency.getSelectionModel().getSelectedItem();//getting current selection
+
+                System.out.println(frequency);
+
+            }
+        });
+
     }
 }

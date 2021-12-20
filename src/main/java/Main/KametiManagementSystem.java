@@ -46,7 +46,7 @@ public class KametiManagementSystem {
         SessionFactory sf= con.buildSessionFactory();
         Session session= sf.openSession();
         Transaction trans= session.beginTransaction();
-    List<User> UserList = session.createQuery("FROM User").getResultList();
+        List<User> UserList = session.createQuery("FROM User").getResultList();
 
             for(int i=0;i<UserList.size();i++)
             {
@@ -84,6 +84,7 @@ public class KametiManagementSystem {
         K.setTotalMembers(10);
         K.setIndivisualShare(1000);
         K.setId(1);
+        session.save(K);
         trans.commit();
         System.out.println(Rule1 + Rule2 + Rule3 + Rule4 + Rule5);
 

@@ -53,6 +53,15 @@ public class SignUp {
 
     @FXML
     void registerButtonClicked(MouseEvent event) {
+
+        Main main = new Main();
+        try {
+            main.changeScene("LogIn.fxml");
+        }
+        catch(Exception e){
+            System.out.println("Sign In Page not Loaded");
+        }
+
         KametiManagementSystem kms = new KametiManagementSystem();
         String _username = username.getText();
         String _password = password.getText();
@@ -63,14 +72,6 @@ public class SignUp {
         String _phoneNumber = phoneNumber.getText();
         String _confirmedPassword = confirmPassword.getText();
         kms.registerAUser(_username,_password,_email,_cnic,_firstName,_lastName,_phoneNumber,_confirmedPassword);
-
-        Main main = new Main();
-        try {
-            main.changeScene("LogIn.fxml");
-        }
-        catch(Exception e){
-            System.out.println("Sign In Page not Loaded");
-        }
     }
 
 }
