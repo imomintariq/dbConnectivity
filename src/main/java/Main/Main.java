@@ -20,8 +20,10 @@ public class Main extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
+/*        KametiManagementSystem kms = new KametiManagementSystem();
+        kms.retrieveKametis();*/
         stg = stage;
-        String fxmlPath = "LogIn.fxml";
+        String fxmlPath = "DashBoard.fxml";
         URL url = getClass().getClassLoader().getResource(fxmlPath);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
         Scene scene = new Scene(fxmlLoader.load(), 630, 450);

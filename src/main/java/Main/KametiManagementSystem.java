@@ -2,7 +2,6 @@ package Main;
 
 import Entities.User;
 import Entities.Kameti;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -40,7 +39,6 @@ public class KametiManagementSystem {
         trans.commit();
 
     }
-
     public boolean LogIn(String Username, String Password) {
 
         Configuration con = new Configuration();
@@ -49,21 +47,81 @@ public class KametiManagementSystem {
         SessionFactory sf= con.buildSessionFactory();
         Session session= sf.openSession();
         Transaction trans= session.beginTransaction();
-
         List<User> UserList = session.createQuery("FROM User").getResultList();
 
-            for(int i=0;i<UserList.size();i++) {
+            for(int i=0;i<UserList.size();i++)
+            {
                 System.out.println(UserList.get(i).getId());
                 System.out.println(UserList.get(i).getPassword());
-
-                if(UserList.get(i).getId().equals(Username) && UserList.get(i).getPassword().equals(Password)){
-                    System.out.println("found");
+                if(Username.equals(UserList.get(i).getId()) && Password.equals(UserList.get(i).getPassword()))
+                {
                     return true;
                 }
             }
-
-            System.out.println("not found");
             return false;
+    }
+
+    public void AddAKameti(String KametiName, String KametiFrequency, String Rule1, String Rule2, String Rule3, String Rule4, String Rule5, String isPrivate, int KametiPayout, LocalDate LC,int kametiDuration)
+    {
+        Configuration con = new Configuration();
+        con.configure().addAnnotatedClass(Kameti.class);
+
+        SessionFactory sf = con.buildSessionFactory();
+        Session session = sf.openSession();
+        Transaction trans = session.beginTransaction();
+        Kameti K = new Kameti();
+        //SETTING VALUES
+        K.setKametiName(KametiName);
+        K.setKametiDuration(kametiDuration);
+        K.setFrequency(KametiFrequency);
+        K.setRule1(Rule1);
+        K.setRule2(Rule2);
+        K.setRule3(Rule3);
+        K.setRule4(Rule4);
+        K.setRule5(Rule5);
+        K.setIsPrivate(isPrivate);
+        K.setTotalPayout(KametiPayout);
+        K.setStartDate(LC);
+
+        if(KametiFrequency.equals("Monthly")){
+            K.setTotalMembers(kametiDuration);
+            System.out.println("Kameti members = " + K.getTotalMembers());
+        }
+        else if(KametiFrequency.equals("After 15 Days")){
+            K.setTotalMembers(kametiDuration * 2);
+            System.out.println("Kameti members = " + K.getTotalMembers());
+        }
+        K.setIndivisualShare(KametiPayout/kametiDuration);
+        session.save(K);
+        trans.commit();
+        System.out.println(Rule1 + Rule2 + Rule3 + Rule4 + Rule5);
+
+    }
+
+    public Kameti retrievePrivateKametis(String kametiCode, String kametiName) {
+
+        Configuration con = new Configuration();
+        con.configure().addAnnotatedClass(Kameti.class);
+
+        SessionFactory sf= con.buildSessionFactory();
+        Session session= sf.openSession();
+        Transaction trans= session.beginTransaction();
+        List<Kameti> kametiList = session.createQuery("FROM Kameti").getResultList();
+        ArrayList<String> kametiStringList = new ArrayList<>();
+
+        for(int i=0;i<kametiList.size();i++)
+        {
+            System.out.println(kametiList.get(i).getKametiName());
+            System.out.println(kametiList.get(i).getKametiDuration());
+            System.out.println(kametiList.get(i).getTotalPayout());
+            kametiStringList.add(kametiList.get(i).getKametiName() + "          " +kametiList.get(i).getKametiDuration() + kametiList.get(i).getTotalPayout());
+
+            if(kametiCode.equals(kametiList.get(i).getId()) && kametiName.equals(kametiList.get(i).getKametiName())){
+                return kametiList.get(i);
+            }
+        }
+        return new Kameti();
+
     }
 
     public ArrayList<String> retrieveKametis() {
@@ -89,31 +147,4 @@ public class KametiManagementSystem {
 
     }
 
-    public void AddAKameti(String KametiName, String KametiFrequency, String Rule1, String Rule2, String Rule3, String Rule4, String Rule5, String isPrivate, int KametiPayout, LocalDate LC,int kametiDuration)
-    {
-        Configuration con = new Configuration();
-        con.configure().addAnnotatedClass(Kameti.class);
-
-        SessionFactory sf = con.buildSessionFactory();
-        Session session = sf.openSession();
-        Transaction trans = session.beginTransaction();
-        Kameti K = new Kameti();
-        //SETTING VALUES
-        K.setKametiName(KametiName);
-        K.setKametiDuration(kametiDuration);
-        K.setFrequency(KametiFrequency);
-        K.setRule1(Rule1);
-        K.setRule2(Rule2);
-        K.setRule3(Rule3);
-        K.setRule4(Rule4);
-        K.setRule5(Rule5);
-        K.setIsPrivate(isPrivate);
-        K.setTotalPayout(KametiPayout);
-        K.setStartDate(LC);
-        K.setTotalMembers(10);
-        K.setIndivisualShare(1000);
-        session.save(K);
-        trans.commit();
-
-    }
 }

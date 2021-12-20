@@ -55,6 +55,9 @@ public class JoinAKameti {
     @FXML
     void publicKametiButtonClicked(MouseEvent event) {
 
+        System.out.println("Public Kameti Button Clicked !!!");
+
+        System.out.println("Private Kameti Button Clicked !!!");
     }
 
 }
