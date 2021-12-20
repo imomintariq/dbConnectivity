@@ -1,6 +1,7 @@
 package Main;
 
 import Entities.User;
+import Entities.Kameti;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -54,6 +55,31 @@ public class KametiManagementSystem {
             }  return true;
     }
 
-    public void AddAKameti(String kametiName, String kametiPaymentFrequency, String rule1, String rule2, String rule3, String rule4, String rule5, String isPrivate, int payout, LocalDate lc, int kametiDuration) {
+    public void AddAKameti(String KametiName, String KametiFrequency, String Rule1, String Rule2, String Rule3, String Rule4, String Rule5, String isPrivate, int KametiPayout, LocalDate LC,int kametiDuration)
+    {
+        Configuration con = new Configuration();
+        con.configure().addAnnotatedClass(User.class);
+
+        SessionFactory sf = con.buildSessionFactory();
+        Session session = sf.openSession();
+        Transaction trans = session.beginTransaction();
+        Kameti K = new Kameti();
+        //SETTING VALUES
+        K.setKametiName(KametiName);
+        K.setKametiDuration(kametiDuration);
+        K.setFrequency(KametiFrequency);
+        K.setRule1(Rule1);
+        K.setRule2(Rule2);
+        K.setRule3(Rule3);
+        K.setRule4(Rule4);
+        K.setRule5(Rule5);
+        K.setIsPrivate(isPrivate);
+        K.setTotalPayout(KametiPayout);
+        K.setStartDate(LC);
+        K.setTotalMembers(10);
+        K.setIndivisualShare(1000);
+        K.setId(1);
+        trans.commit();
+
     }
 }

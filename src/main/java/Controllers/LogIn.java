@@ -43,5 +43,4 @@ public class LogIn {
             System.out.println("Sign Up Page not Loaded");
         }
     }
-
 }
