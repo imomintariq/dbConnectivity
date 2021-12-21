@@ -1,8 +1,11 @@
 
 package Controllers;
 
+import Entities.User;
+import Exceptions.LogInException;
 import Main.KametiManagementSystem;
 import Main.Main;
+import Utility.SignedInUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -54,22 +57,58 @@ public class SignUp {
     }
 
     @FXML
-    void registerButtonClicked(MouseEvent event) throws IOException {
-            String _username = username.getText();
-        String _password = password.getText();
-        String _email = email.getText();
-        String _cnic = cnic.getText();
-        String _firstName = firstName.getText();
-        String _lastName = lastName.getText();
-        String _phoneNumber = phoneNumber.getText();
-        String _confirmedPassword = confirmPassword.getText();
+    void registerButtonClicked(MouseEvent event) throws IOException, LogInException {
+        String _username = username.getText();
+        String _passWord = password.getText();
+        User user = new User();
+        User user2 = new User();
+        KametiManagementSystem kms = new KametiManagementSystem();
+        user = kms.retrieveUser(_username, _passWord);
+        boolean flag = false;
 
-        if (_password.equals(_confirmedPassword)) {
+        try {
+            flag = checkSingUp(user, user2);
+        } catch (Exception e) {
+            System.out.println("Sign Up Unsuccesful");
+        }
+        if (flag == false) {
+
+
+        }
+    }
+
+    boolean checkSingUp(User U1, User U2) throws LogInException, IOException {
+        boolean returnFlag = false;
+        if(U1 != null)
+        {
+            System.out.println("A person with the same username has already been registered");
+            returnFlag = true;
+        }
+        if(cnic.getText().length() < 13)
+        {
+            System.out.println("CNIC Must be valid (13 characters long)");
+            returnFlag = true;
+        }
+        if(password.getText().equals(confirmPassword.getText())!= true)
+        {
+           System.out.println("Password and Confirmed Password do not match!");
+           returnFlag = true;
+        }
+        if(returnFlag == false) {
+            String _password = password.getText();
+            String _email = email.getText();
+            String _cnic = cnic.getText();
+            String _firstName = firstName.getText();
+            String _lastName = lastName.getText();
+            String _phoneNumber = phoneNumber.getText();
+            String _confirmedPassword = confirmPassword.getText();
+            String _username = password.getText();
             KametiManagementSystem kms = new KametiManagementSystem();
-            kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword);
-            FileWriter Fr = new FileWriter("Users.txt",true );
+            SignedInUser signedInUser = SignedInUser.getInstance();
+            signedInUser.setUser(U2);  kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword);
+            FileWriter Fr = new FileWriter("Users.txt", true);
             BufferedWriter br = new BufferedWriter(Fr);
-            String toWrite ="";
+            String toWrite = "";
             toWrite += _username;
             toWrite += "  -  ";
             toWrite += _password;
@@ -92,13 +131,14 @@ public class SignUp {
 
             Main main = new Main();
             try {
-                main.changeScene("LogIn.fxml");
+                main.changeScene("DashBoard.fxml");
             } catch (Exception e) {
                 System.out.println("Log In Page not Loaded");
             }
         }
-
-        }
-
+        return false;
+    }
 }
+
+
 
