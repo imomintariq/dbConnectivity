@@ -1,44 +1,50 @@
 package Controllers;
 
-import Entities.Kameti;
-import Main.KametiManagementSystem;
 import Main.Main;
-import Utility.SignedInUser;
+import Main.KametiManagementSystem;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 
-public class PublicKametis implements Initializable {
+public class ViewKametis implements Initializable {
+
+
 
     @FXML
-    private ListView<String> kametiList = new ListView<String>();
+    private Button backButton;
 
     @FXML
-    private Button joinButton;
+    private Button chooseButton;
+
+    @FXML
+    private ListView<String> joinedkametiList;
+
+    @FXML
+    private ListView<String> ownedKametiList;
 
     private String selectedRow;
     private ArrayList<String> selectedKameti;
-
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
         selectedKameti = new ArrayList<>();
         KametiManagementSystem kms = new KametiManagementSystem();
-        ArrayList<String> k = kms.retrieveKametis();
-        kametiList.getItems().addAll(k);
-        kametiList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+        ArrayList<String> k = kms.retrieveJoinedKametis();
+        joinedkametiList.getItems().addAll(k);
+        joinedkametiList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
 
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                selectedRow = kametiList.getSelectionModel().getSelectedItem();//getting current selection
+                selectedRow = joinedkametiList.getSelectionModel().getSelectedItem();//getting current selection
 
                 selectedKameti.clear();
                 StringTokenizer st = new StringTokenizer(selectedRow," ");
@@ -55,7 +61,8 @@ public class PublicKametis implements Initializable {
     }
 
     @FXML
-    public void backButtonClicked(javafx.scene.input.MouseEvent mouseEvent) {
+    void backButtonClicked(MouseEvent event) {
+
         Main main = new Main();
         try {
             main.changeScene("DashBoard.fxml");
@@ -63,21 +70,13 @@ public class PublicKametis implements Initializable {
         catch(Exception e){
             System.out.println("Sign Up Page not Loaded");
         }
+
     }
-
-
 
     @FXML
-    public void joinButtonClicked(javafx.scene.input.MouseEvent mouseEvent) {
-        KametiManagementSystem kms = new KametiManagementSystem();
-        Kameti kametiToBeJoined = kms.getKametiWithId(selectedKameti.get(0));
-        if(kametiToBeJoined == null){
-            //throw noKametiSelectedException;
-            System.out.println("No kameti is selected");
-        }
-        else{
-            SignedInUser signedInUser = SignedInUser.getInstance();
-            kms.addMemberToKameti(signedInUser.getUser(),kametiToBeJoined);
-        }
+    void chooseButtonClicked(MouseEvent event) {
+
+
     }
+
 }

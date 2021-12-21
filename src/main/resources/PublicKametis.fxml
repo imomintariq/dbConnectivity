@@ -41,7 +41,12 @@
                   <Font name="Arial Bold Italic" size="15.0" />
                </font>
             </Text>
-            <Button fx:id="backButton" layoutX="245.0" layoutY="387.0" mnemonicParsing="false" onMouseClicked="#backButtonClicked" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: E3482D;" text="Back to Dashboard" textFill="WHITE">
+            <Button fx:id="backButton" layoutX="181.0" layoutY="384.0" mnemonicParsing="false" onMouseClicked="#backButtonClicked" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: E3482D;" text="Back to Dashboard" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="joinButton" layoutX="323.0" layoutY="384.0" mnemonicParsing="false" onMouseClicked="#joinButtonClicked" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: E3482D;" text="Join!!!" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

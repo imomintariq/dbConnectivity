@@ -2,6 +2,7 @@ package Controllers;
 import Exceptions.LogInException;
 import Main.KametiManagementSystem;
 import Main.Main;
+import Utility.SignedInUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -32,6 +33,7 @@ public class LogIn {
         boolean logIn = kms.LogIn(username.getText(), password.getText());
         try {
             checkLogin(logIn);
+
         } catch (Exception e) {
             System.out.println("Oh No! You do not seemed to be signed up" + e);
         }
@@ -54,6 +56,9 @@ public class LogIn {
             if (flag == true) {
                 Main main = new Main();
                 try {
+                    KametiManagementSystem kms = new KametiManagementSystem();
+                    SignedInUser signedInUser = SignedInUser.getInstance();
+                    signedInUser.setUser(kms.retrieveUser(username.getText(),password.getText()));
                     main.changeScene("DashBoard.fxml");
                 } catch (Exception e) {
                     System.out.println("Log In Page not Loaded");
