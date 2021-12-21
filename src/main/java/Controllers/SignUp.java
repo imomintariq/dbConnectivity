@@ -8,6 +8,7 @@ import Main.Main;
 import Utility.SignedInUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -16,6 +17,8 @@ import java.io.*;
 
 public class SignUp {
 
+    @FXML
+    private Label ExceptionText;
     @FXML
     private Button backButton;
 
@@ -83,18 +86,23 @@ public class SignUp {
         {
             System.out.println("A person with the same username has already been registered");
             returnFlag = true;
+            ExceptionText.setText("A person with the same username already exists");
         }
         if(cnic.getText().length() < 13)
         {
+            ExceptionText.setText("CNIC Must be valid (13 characters long)");
             System.out.println("CNIC Must be valid (13 characters long)");
             returnFlag = true;
         }
         if(password.getText().equals(confirmPassword.getText())!= true)
         {
-           System.out.println("Password and Confirmed Password do not match!");
+            ExceptionText.setText("Password and Confirmed Password do not match!");
+           System.out.println("");
            returnFlag = true;
         }
         if(returnFlag == false) {
+            ExceptionText.setText("Sign Up Successful");
+            ExceptionText.setVisible(true);
             String _password = password.getText();
             String _email = email.getText();
             String _cnic = cnic.getText();

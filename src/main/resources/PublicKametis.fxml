@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -26,7 +27,7 @@
                   <Font name="Arial Bold Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="#c1121c" layoutX="231.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose A Kameti">
+            <Text fill="#c1121c" layoutX="239.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose A Kameti">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
@@ -41,16 +42,17 @@
                   <Font name="Arial Bold Italic" size="15.0" />
                </font>
             </Text>
-            <Button fx:id="backButton" layoutX="181.0" layoutY="384.0" mnemonicParsing="false" onMouseClicked="#backButtonClicked" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: E3482D;" text="Back to Dashboard" textFill="WHITE">
+            <Button fx:id="backButton" layoutX="176.0" layoutY="402.0" mnemonicParsing="false" onMouseClicked="#backButtonClicked" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: E3482D;" text="Back to Dashboard" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="joinButton" layoutX="323.0" layoutY="384.0" mnemonicParsing="false" onMouseClicked="#joinButtonClicked" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: E3482D;" text="Join!!!" textFill="WHITE">
+            <Button fx:id="joinButton" layoutX="323.0" layoutY="402.0" mnemonicParsing="false" onMouseClicked="#joinButtonClicked" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: E3482D;" text="Join!!!" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <Label fx:id="NoKametiSelectedLabel" layoutX="309.0" layoutY="373.0" />
          </children>
       </Pane>
    </children>
