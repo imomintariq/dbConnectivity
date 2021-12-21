@@ -1,5 +1,6 @@
 package Main;
 
+import Music.Music;
 import javafx.scene.Parent;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,9 @@ public class Main extends Application{
     private static Stage stg;
 
     public static void main(String [] args){
+
+        Music music = new Music();
+        music.run();
         launch();
     }
 
@@ -38,4 +42,6 @@ public class Main extends Application{
         stg.getScene().setRoot(pane);
 
     }
+
+
 }
