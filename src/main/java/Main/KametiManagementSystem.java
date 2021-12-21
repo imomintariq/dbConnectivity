@@ -108,9 +108,28 @@ public class KametiManagementSystem {
         K.setIsPrivate(isPrivate);
         K.setTotalPayout(KametiPayout);
         K.setStartDate(LC);
-        K.setTotalMembers(10);
-        K.setIndividualShare(1000);
-        K.setId(5);
+        if(frequency.equals("After 15 Days")){
+            System.out.println("Freq is fortnightly");
+
+
+            K.setTotalMembers(kametiDuration*2);
+            K.setIndividualShare(KametiPayout/K.getTotalMembers());
+            System.out.println("Total Payout " + KametiPayout);
+            System.out.println("Total Members " + kametiDuration*2);
+            System.out.println("Individual Share " + K.getIndividualShare());
+        }
+        else if (frequency.equals("Monthly")){
+            System.out.println("Freq is monthly");
+            K.setTotalMembers(kametiDuration);
+            K.setIndividualShare(KametiPayout/K.getTotalMembers());
+
+            System.out.println("Total Payout " + KametiPayout);
+            System.out.println("Total Members " + kametiDuration);
+            System.out.println("Individual Share " + K.getIndividualShare());
+        }
+
+
+        //K.setId(5);
         SignedInUser signedInUser = SignedInUser.getInstance();
         K.setKametiHead(signedInUser.getUser());
         session.save(K);
@@ -233,4 +252,29 @@ public class KametiManagementSystem {
     }
 
 
+    public ArrayList<String> retrieveOwnedKametis() {
+        Configuration con = new Configuration();
+        con.configure().addAnnotatedClass(Member.class);
+
+        SessionFactory sf= con.buildSessionFactory();
+        Session session= sf.openSession();
+        Transaction trans= session.beginTransaction();
+        List<Kameti> kametiList = session.createQuery("FROM Kameti").getResultList();
+        ArrayList<String> kametiStringList = new ArrayList<>();
+
+        SignedInUser signedInUser = SignedInUser.getInstance();
+        String username = signedInUser.getUser().getId();
+
+
+        for(int i=0;i<kametiList.size();i++)
+        {
+            if(kametiList.get(i).getKametiHead().getId().equals(username)){
+                kametiStringList.add(kametiList.get(i).getId() + "          "+kametiList.get(i).getKametiName() + "          " +kametiList.get(i).getKametiDuration() + "          " + kametiList.get(i).getTotalPayout());
+                //System.out.println(memberList.get(i).getKametiId().getId() + "          "+memberList.get(i).getKametiId().getKametiName() + "          " +memberList.get(i).getKametiId().getKametiDuration() + "          " + memberList.get(i).getKametiId().getTotalPayout());
+            }
+
+
+        }
+        return kametiStringList;
+    }
 }
