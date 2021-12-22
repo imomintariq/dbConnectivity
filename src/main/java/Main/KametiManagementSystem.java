@@ -15,6 +15,8 @@ import java.util.List;
 
 public class KametiManagementSystem {
 
+    private boolean admin; //0 for admin; 1 for standard user.
+
     public ArrayList<String> retrieveKametis() {
 
         Configuration con = new Configuration();
@@ -39,7 +41,7 @@ public class KametiManagementSystem {
 
     }
 
-    public void registerAUser(String username, String password, String email, String cnic, String firstName, String lastName, String phoneNumber, String confirmedPassword) {
+    public void registerAUser(String username, String password, String email, String cnic, String firstName, String lastName, String phoneNumber, String confirmedPassword, boolean checkAdmin) {
 
         Configuration con = new Configuration();
         con.configure().addAnnotatedClass(User.class);
@@ -47,7 +49,6 @@ public class KametiManagementSystem {
         SessionFactory sf= con.buildSessionFactory();
         Session session= sf.openSession();
         Transaction trans= session.beginTransaction();
-
 
         User user= new User();
         //member.setId();
@@ -59,6 +60,7 @@ public class KametiManagementSystem {
         user.setPhoneNumber(phoneNumber);
         user.setFirstName(firstName);
         user.setLastName(lastName);
+        user.setAdminCheck(checkAdmin);
         session.save(user);
 
 
@@ -66,12 +68,12 @@ public class KametiManagementSystem {
 
     }
 
-    public boolean LogIn(String Username, String Password) {
+    public String LogIn(String Username, String Password) {
 
         Configuration con = new Configuration();
         con.configure().addAnnotatedClass(User.class);
 
-        SessionFactory sf= con.buildSessionFactory();
+        SessionFactory sf = con.buildSessionFactory();
         Session session= sf.openSession();
         Transaction trans= session.beginTransaction();
         List<User> UserList = session.createQuery("FROM User").getResultList();
@@ -80,12 +82,16 @@ public class KametiManagementSystem {
             {
                 System.out.println(UserList.get(i).getId());
                 System.out.println(UserList.get(i).getPassword());
-                if(Username.equals(UserList.get(i).getId()) && Password.equals(UserList.get(i).getPassword()))
-                {
-                    return true;
+                if(Username.equals(UserList.get(i).getId()) && Password.equals(UserList.get(i).getPassword())) {
+                    if(UserList.get(i).getAdminCheck() == true){
+                        return "admin";
+                    }
+                    else{
+                        return "standard user";
+                    }
                 }
             }
-            return false;
+            return "not found";
     }
 
     public void AddAKameti(String KametiName, String frequency, String Rule1, String Rule2, String Rule3, String Rule4, String Rule5, String isPrivate, int KametiPayout, LocalDate LC,int kametiDuration) {
@@ -108,6 +114,7 @@ public class KametiManagementSystem {
         K.setIsPrivate(isPrivate);
         K.setTotalPayout(KametiPayout);
         K.setStartDate(LC);
+        K.setIndividualShare(0);
         if(frequency.equals("After 15 Days")){
             System.out.println("Freq is fortnightly");
 
@@ -138,7 +145,7 @@ public class KametiManagementSystem {
 
     }
 
-    public boolean checkUser(String username) {
+    /*public boolean checkUser(String username) {
 
         Configuration con = new Configuration();
         con.configure().addAnnotatedClass(Kameti.class);
@@ -146,7 +153,7 @@ public class KametiManagementSystem {
         SessionFactory sf= con.buildSessionFactory();
         Session session= sf.openSession();
         Transaction trans= session.beginTransaction();
-        List<User> UserList = session.createQuery("FROM User").getResultList();
+        List<User> UserList = session.createQuery("FROM User", User).getResultList();
 
         boolean found = false;
 
@@ -158,7 +165,7 @@ public class KametiManagementSystem {
 
         return false;
 
-    }
+    }*/
 
     public User retrieveUser(String username, String password) {
         Configuration con = new Configuration();

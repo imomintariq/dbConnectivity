@@ -113,7 +113,7 @@ public class SignUp {
             String _username = password.getText();
             KametiManagementSystem kms = new KametiManagementSystem();
             SignedInUser signedInUser = SignedInUser.getInstance();
-            signedInUser.setUser(U2);  kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword);
+            signedInUser.setUser(U2);  kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword,false);
             FileWriter Fr = new FileWriter("Users.txt", true);
             BufferedWriter br = new BufferedWriter(Fr);
             String toWrite = "";
@@ -139,7 +139,7 @@ public class SignUp {
 
             Main main = new Main();
             try {
-                main.changeScene("DashBoard.fxml");
+                main.changeScene("LogIn.fxml");
             } catch (Exception e) {
                 System.out.println("Log In Page not Loaded");
             }

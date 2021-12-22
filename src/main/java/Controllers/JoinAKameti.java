@@ -31,7 +31,7 @@ public class JoinAKameti {
     void backButtonClicked(MouseEvent event) {
         Main main = new Main();
         try {
-            main.changeScene("DashBoard.fxml");
+            main.changeScene("StandardUserPages/DashBoard.fxml");
         }
         catch(Exception e){
             System.out.println("Dash Board Page not Loaded");
@@ -45,7 +45,7 @@ public class JoinAKameti {
         pvk.setKametiName(kametiName.getText());
         Main main = new Main();
         try {
-            main.changeScene("PrivateKameti.fxml");
+            main.changeScene("StandardUserPages/PrivateKameti.fxml");
         }
         catch(Exception e){
             System.out.println("Private Kameti Page not Loaded");
@@ -56,7 +56,7 @@ public class JoinAKameti {
     void publicKametiButtonClicked(MouseEvent event) {
         Main main = new Main();
         try {
-            main.changeScene("PublicKametis.fxml");
+            main.changeScene("StandardUserPages/PublicKametis.fxml");
         }
         catch(Exception e){
             System.out.println("Public Kameti Lists Page not Loaded");

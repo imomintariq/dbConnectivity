@@ -17,7 +17,7 @@
          <children>
             <ImageView fitHeight="256.0" fitWidth="455.0" layoutX="-101.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                <image>
-                  <Image url="@images/sideImage.jpg" />
+                  <Image url="@../images/sideImage.jpg" />
                </image>
             </ImageView>
             <Text fill="#e3482d" layoutX="411.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign Up" textAlignment="CENTER" wrappingWidth="87.0">

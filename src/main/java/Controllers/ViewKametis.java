@@ -88,7 +88,7 @@ public class ViewKametis implements Initializable {
 
         Main main = new Main();
         try {
-            main.changeScene("DashBoard.fxml");
+            main.changeScene("StandardUserPages/DashBoard.fxml");
         }
         catch(Exception e){
             System.out.println("Sign Up Page not Loaded");
