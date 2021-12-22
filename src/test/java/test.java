@@ -19,7 +19,7 @@ public class test {
     @BeforeClass
     public static void setUp(){
         kms = new KametiManagementSystem();
-        kametiStringList = kms.retrieveKametis();
+        kametiStringList = kms.retrievePublicKametis();
         kms.registerAUser("sampleUser","password","sampleuser@email.com","13123 3123123 12","Sample","User","0300 0000000","password",true);
     }
 

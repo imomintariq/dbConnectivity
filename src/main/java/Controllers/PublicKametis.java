@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 
-public class PublicKametis implements Initializable {
+public class PublicKametis implements Initializable { //for standard user
     @FXML
     private Label NoKametiSelectedLabel;
 
@@ -38,7 +38,7 @@ public class PublicKametis implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         selectedKameti = new ArrayList<>();
         KametiManagementSystem kms = new KametiManagementSystem();
-        ArrayList<String> k = kms.retrieveKametis();
+        ArrayList<String> k = kms.retrievePublicKametis();
         kametiList.getItems().addAll(k);
         kametiList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 

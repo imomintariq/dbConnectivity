@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 
-public class PublicKametisList implements Initializable { //for admin
+public class PrivateKametisList implements Initializable {
     @FXML
     private ListView<String> kametiList = new ListView<String>();
 
@@ -25,7 +25,7 @@ public class PublicKametisList implements Initializable { //for admin
     public void initialize(URL url, ResourceBundle rb){
         selectedKameti = new ArrayList<>();
         KametiManagementSystem kms = new KametiManagementSystem();
-        ArrayList<String> k = kms.retrievePublicKametis();
+        ArrayList<String> k = kms.retrievePrivateKametis();
         kametiList.getItems().addAll(k);
         kametiList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
 
