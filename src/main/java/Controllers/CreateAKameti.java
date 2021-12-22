@@ -96,7 +96,7 @@ public class CreateAKameti implements Initializable {
                 String.valueOf(rule3Check.isSelected()),
                 String.valueOf(rule4Check.isSelected()),
                 String.valueOf(rule5Check.isSelected()),
-                isPrivateCheck.getText(),
+                String.valueOf(isPrivateCheck.isSelected()),
                 Integer.parseInt(kametiPayoutField.getText()), DatePickerNote.getValue(),Integer.parseInt(kametiDurationField.getText()));
         //WRITING INTO FILE
         FileWriter Fr = new FileWriter("Kametis.txt",true );

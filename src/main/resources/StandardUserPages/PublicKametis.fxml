@@ -22,7 +22,7 @@
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fbaf3e" height="36.0" layoutX="181.0" layoutY="85.0" stroke="#f8f8f8" strokeType="INSIDE" strokeWidth="0.0" width="284.0" />
             <ListView fx:id="kametiList" layoutX="181.0" layoutY="120.0" prefHeight="244.0" prefWidth="284.0" style="-fx-background-color: E3482D;" />
-            <Text fill="WHITE" layoutX="204.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+            <Text fill="WHITE" layoutX="244.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
                <font>
                   <Font name="Arial Bold Italic" size="15.0" />
                </font>
@@ -32,12 +32,12 @@
                   <Font name="System Bold" size="21.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="292.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration">
+            <Text fill="WHITE" layoutX="319.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration">
                <font>
                   <Font name="Arial Bold Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="383.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payout">
+            <Text fill="WHITE" layoutX="399.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payout">
                <font>
                   <Font name="Arial Bold Italic" size="15.0" />
                </font>
@@ -53,6 +53,11 @@
                </font>
             </Button>
             <Label fx:id="NoKametiSelectedLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="198.0" layoutY="371.0" prefHeight="17.0" prefWidth="249.0" />
+            <Text fill="WHITE" layoutX="194.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
+               <font>
+                  <Font name="Arial Bold Italic" size="15.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
    </children>

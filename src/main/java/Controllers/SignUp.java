@@ -132,7 +132,7 @@ public class SignUp {
             toWrite += _phoneNumber;
             toWrite += "  -  ";
             toWrite += _confirmedPassword;
-            toWrite += "  -  ";
+            toWrite += "\n";
             br.write(toWrite);
             br.newLine();
             br.close();

@@ -4,6 +4,7 @@ import Entities.Complaint;
 import Entities.Kameti;
 import Entities.Member;
 import Entities.User;
+import Utility.Selectedkameti;
 import Utility.SignedInUser;
 import javafx.scene.control.TextField;
 import org.hibernate.Session;
@@ -263,7 +264,7 @@ public class KametiManagementSystem {
 
     public ArrayList<String> retrieveOwnedKametis() {
         Configuration con = new Configuration();
-        con.configure().addAnnotatedClass(Member.class);
+        con.configure().addAnnotatedClass(Kameti.class);
 
         SessionFactory sf= con.buildSessionFactory();
         Session session= sf.openSession();
@@ -338,5 +339,30 @@ public class KametiManagementSystem {
 
         trans.commit();
 
+    }
+
+    public ArrayList<String> retrieveKametiMembers() {
+        Configuration con = new Configuration();
+        con.configure().addAnnotatedClass(Member.class);
+
+        SessionFactory sf= con.buildSessionFactory();
+        Session session= sf.openSession();
+        Transaction trans= session.beginTransaction();
+        List<Member> memberList = session.createQuery("FROM Member").getResultList();
+        ArrayList<String> memberStringList = new ArrayList<>();
+
+        Selectedkameti sc = Selectedkameti.getInstance();
+        int kametiCode = sc.getKameti().getId();
+
+        for(int i=0;i<memberList.size();i++)
+        {
+            if(memberList.get(i).getKametiId().getId() == kametiCode){
+                memberStringList.add(memberList.get(i).getUsername().getId()+ "          "+memberList.get(i).getUsername().getFirstName()+" "+ memberList.get(i).getUsername().getLastName()+ "          "+memberList.get(i).getTurnNumber()+ "          " +memberList.get(i).getHasPaid());
+                //System.out.println(memberList.get(i).getKametiId().getId() + "          "+memberList.get(i).getKametiId().getKametiName() + "          " +memberList.get(i).getKametiId().getKametiDuration() + "          " + memberList.get(i).getKametiId().getTotalPayout());
+            }
+
+
+        }
+        return memberStringList;
     }
 }

@@ -12,8 +12,8 @@
    <children>
       <Pane prefHeight="450.0" prefWidth="630.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faf9f6" height="66.0" layoutY="386.0" stroke="#faf9f6" strokeType="INSIDE" width="630.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faf9f6" height="66.0" layoutY="-1.0" stroke="#faf9f6" strokeType="INSIDE" width="630.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#edcfb7" height="66.0" layoutY="386.0" stroke="#faf9f6" strokeType="INSIDE" width="630.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#edcfb7" height="66.0" layoutY="-1.0" stroke="#faf9f6" strokeType="INSIDE" width="630.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faac3ee8" height="337.0" layoutY="58.0" stroke="#f57738" strokeType="INSIDE" width="311.0" />
             <Text fill="#c1121c" layoutX="249.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Join A Kameti">
                <font>
