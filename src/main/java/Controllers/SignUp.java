@@ -110,7 +110,7 @@ public class SignUp {
             String _lastName = lastName.getText();
             String _phoneNumber = phoneNumber.getText();
             String _confirmedPassword = confirmPassword.getText();
-            String _username = password.getText();
+            String _username = username.getText();
             KametiManagementSystem kms = new KametiManagementSystem();
             SignedInUser signedInUser = SignedInUser.getInstance();
             signedInUser.setUser(U2);  kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword,false);
