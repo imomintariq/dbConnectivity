@@ -27,7 +27,7 @@ public class DashBoard {
     {
         Main main = new Main();
         try {
-            main.changeScene("CreateAKameti.fxml");
+            main.changeScene("StandardUserPages/CreateAKameti.fxml");
         }
         catch(Exception e){
             System.out.println("Create A Kameti Page not Loaded");
@@ -40,7 +40,7 @@ public class DashBoard {
     {
         Main main = new Main();
         try {
-            main.changeScene("JoinAKameti.fxml");
+            main.changeScene("StandardUserPages/JoinAKameti.fxml");
         }
         catch(Exception e){
             System.out.println("Join A Kameti Page not Loaded");
@@ -74,4 +74,6 @@ public class DashBoard {
         }
     }
 
+    public void reportButtonClicked(MouseEvent mouseEvent) {
+    }
 }

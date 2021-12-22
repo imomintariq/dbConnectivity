@@ -1,18 +1,18 @@
-
 package Controllers;
 
-import Main.KametiManagementSystem;
 import Main.Main;
+import Main.KametiManagementSystem;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
-public class SignUp {
-
+public class NewAdmin {
     @FXML
     private Button backButton;
 
@@ -47,9 +47,9 @@ public class SignUp {
     void backButtonClicked(MouseEvent event) {
         Main main = new Main();
         try {
-            main.changeScene("LogIn.fxml");
+            main.changeScene("AdminPages/AdminDashBoard.fxml");
         } catch (Exception e) {
-            System.out.println("Log In Page not Loaded");
+            System.out.println("Admin Dashboard Page not Loaded");
         }
     }
 
@@ -90,16 +90,8 @@ public class SignUp {
             br.write(toWrite);
             br.newLine();
             br.close();
-
-            Main main = new Main();
-            try {
-                main.changeScene("LogIn.fxml");
-            } catch (Exception e) {
-                System.out.println("Log In Page not Loaded");
-            }
         }
 
-        }
+    }
 
 }
-

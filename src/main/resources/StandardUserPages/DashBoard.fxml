@@ -17,7 +17,7 @@
                   <Font name="Arial Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="helpButton" layoutX="275.0" layoutY="290.0" mnemonicParsing="false" onMouseClicked="#helpButtonClicked" prefHeight="51.0" prefWidth="332.0" style="-fx-background-color: #2DB4A5;" text="Help" textFill="WHITE">
+            <Button fx:id="reportButton" layoutX="275.0" layoutY="290.0" mnemonicParsing="false" onMouseClicked="#reportButtonClicked" prefHeight="51.0" prefWidth="332.0" style="-fx-background-color: #2DB4A5;" text="Report" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>
@@ -34,7 +34,7 @@
             </Button>
             <ImageView fitHeight="255.0" fitWidth="451.0" layoutX="-99.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                <image>
-                  <Image url="@images/sideImage.jpg" />
+                  <Image url="@../images/sideImage.jpg" />
                </image>
             </ImageView>
             <Button fx:id="joinKametiButton" layoutX="275.0" layoutY="224.0" mnemonicParsing="false" onMouseClicked="#joinKametiButtonClicked" prefHeight="51.0" prefWidth="332.0" style="-fx-background-color: F57738;" text="Join a Kameti" textFill="WHITE">

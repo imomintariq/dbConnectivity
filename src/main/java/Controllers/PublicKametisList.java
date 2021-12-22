@@ -13,8 +13,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 
-public class PublicKametis implements Initializable {
-
+public class PublicKametisList implements Initializable {
     @FXML
     private ListView<String> kametiList = new ListView<String>();
 
@@ -51,10 +50,10 @@ public class PublicKametis implements Initializable {
     public void backButtonClicked(javafx.scene.input.MouseEvent mouseEvent) {
         Main main = new Main();
         try {
-            main.changeScene("StandardUserPages/DashBoard.fxml");
+            main.changeScene("AdminPages/AdminDashBoard.fxml");
         }
         catch(Exception e){
-            System.out.println("Sign Up Page not Loaded");
+            System.out.println("Admin Dashboard Page not Loaded");
         }
     }
 }

@@ -16,7 +16,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -67,7 +66,7 @@ public class CreateAKameti implements Initializable {
     void backButtonClicked(MouseEvent event) {
         Main main = new Main();
         try {
-            main.changeScene("DashBoard.fxml");
+            main.changeScene("StandardUserPages/DashBoard.fxml");
         }
         catch(Exception e){
             System.out.println("Dash Board Page not Loaded");
@@ -134,7 +133,7 @@ public class CreateAKameti implements Initializable {
 
         Main main = new Main();
         try {
-            main.changeScene("DashBoard.fxml");
+            main.changeScene("StandardUserPages/DashBoard.fxml");
         }
         catch(Exception e){
             System.out.println("Dash Board Page not Loaded");
