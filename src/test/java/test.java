@@ -20,7 +20,7 @@ public class test {
     public static void setUp(){
         kms = new KametiManagementSystem();
         kametiStringList = kms.retrieveKametis();
-        kms.registerAUser("sampleUser1","password","sampleuser@email.com","13123 3123123 12","Sample","User","0300 0000000","password");
+        kms.registerAUser("sampleUser","password","sampleuser@email.com","13123 3123123 12","Sample","User","0300 0000000","password",true);
     }
 
     @Test
@@ -46,7 +46,7 @@ public class test {
         Assertions.assertEquals(found,true);
     }
 
-   /* @Test
+   /*@Test
     public void checkUserInsertion(){
         Assertions.assertEquals(kms.checkUser("No User"),true);
     }*/

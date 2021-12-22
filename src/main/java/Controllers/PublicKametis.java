@@ -13,8 +13,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 
@@ -62,8 +64,9 @@ public class PublicKametis implements Initializable {
     public void backButtonClicked(javafx.scene.input.MouseEvent mouseEvent) {
         Main main = new Main();
         try {
-            main.changeScene("DashBoard.fxml");
-        } catch (Exception e) {
+            main.changeScene("StandardUserPages/DashBoard.fxml");
+        }
+        catch(Exception e){
             System.out.println("Sign Up Page not Loaded");
         }
     }

@@ -64,35 +64,36 @@ public class SignUp {
     void registerButtonClicked(MouseEvent event) throws IOException, LogInException {
         String _username = username.getText();
         String _passWord = password.getText();
-        User user1 = new User();
+        User user = new User();
         User user2 = new User();
         KametiManagementSystem kms = new KametiManagementSystem();
-        user1 = kms.retrieveUser(_username, _passWord);
+        user = kms.retrieveUser(_username, _passWord);
         boolean flag = false;
 
         try {
-            checkSingUp(user1, user2);
+            flag = checkSingUp(user, user2);
         } catch (Exception e) {
             System.out.println("Sign Up Unsuccesful");
-            ExceptionText.setText("Password and Confirmed Password do not match!");
+        }
+        if (flag == false) {
+
+
         }
     }
 
-    boolean checkSingUp(User U1, User U2) throws LogInException, IOException, SignUpException {
+    boolean checkSingUp(User U1, User U2) throws LogInException, IOException {
         boolean returnFlag = false;
         if(U1 != null)
         {
             System.out.println("A person with the same username has already been registered");
+            returnFlag = true;
             ExceptionText.setText("A person with the same username already exists");
-            ExceptionText.setVisible(true);
-            throw new SignUpException("Same Username already exists");
-
         }
         if(cnic.getText().length() < 13)
         {
             ExceptionText.setText("CNIC Must be valid (13 characters long)");
-            ExceptionText.setVisible(true);
-            throw new SignUpException("Same Username already exists");
+            System.out.println("CNIC Must be valid (13 characters long)");
+            returnFlag = true;
         }
         if(password.getText().equals(confirmPassword.getText())!= true)
         {
@@ -121,10 +122,10 @@ public class SignUp {
             String _lastName = lastName.getText();
             String _phoneNumber = phoneNumber.getText();
             String _confirmedPassword = confirmPassword.getText();
-            String _username = password.getText();
+            String _username = username.getText();
             KametiManagementSystem kms = new KametiManagementSystem();
-            System.out.println(signedInUser.getUser().getFirstName());
-            kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword);
+            SignedInUser signedInUser = SignedInUser.getInstance();
+            signedInUser.setUser(U2);  kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword,false);
             FileWriter Fr = new FileWriter("Users.txt", true);
             BufferedWriter br = new BufferedWriter(Fr);
             String toWrite = "";
@@ -150,7 +151,7 @@ public class SignUp {
 
             Main main = new Main();
             try {
-                main.changeScene("DashBoard.fxml");
+                main.changeScene("LogIn.fxml");
             } catch (Exception e) {
                 System.out.println("Log In Page not Loaded");
             }

@@ -1,9 +1,11 @@
 package Main;
 
+import Entities.Complaint;
 import Entities.Kameti;
 import Entities.Member;
 import Entities.User;
 import Utility.SignedInUser;
+import javafx.scene.control.TextField;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -14,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KametiManagementSystem {
+
+    private boolean admin; //0 for admin; 1 for standard user.
 
     public ArrayList<String> retrieveKametis() {
 
@@ -39,7 +43,7 @@ public class KametiManagementSystem {
 
     }
 
-    public void registerAUser(String username, String password, String email, String cnic, String firstName, String lastName, String phoneNumber, String confirmedPassword) {
+    public void registerAUser(String username, String password, String email, String cnic, String firstName, String lastName, String phoneNumber, String confirmedPassword, boolean checkAdmin) {
 
         Configuration con = new Configuration();
         con.configure().addAnnotatedClass(User.class);
@@ -47,7 +51,6 @@ public class KametiManagementSystem {
         SessionFactory sf= con.buildSessionFactory();
         Session session= sf.openSession();
         Transaction trans= session.beginTransaction();
-
 
         User user= new User();
         //member.setId();
@@ -59,6 +62,7 @@ public class KametiManagementSystem {
         user.setPhoneNumber(phoneNumber);
         user.setFirstName(firstName);
         user.setLastName(lastName);
+        user.setAdminCheck(checkAdmin);
         session.save(user);
 
 
@@ -66,12 +70,12 @@ public class KametiManagementSystem {
 
     }
 
-    public boolean LogIn(String Username, String Password) {
+    public String LogIn(String Username, String Password) {
 
         Configuration con = new Configuration();
         con.configure().addAnnotatedClass(User.class);
 
-        SessionFactory sf= con.buildSessionFactory();
+        SessionFactory sf = con.buildSessionFactory();
         Session session= sf.openSession();
         Transaction trans= session.beginTransaction();
         List<User> UserList = session.createQuery("FROM User").getResultList();
@@ -80,12 +84,16 @@ public class KametiManagementSystem {
             {
                 System.out.println(UserList.get(i).getId());
                 System.out.println(UserList.get(i).getPassword());
-                if(Username.equals(UserList.get(i).getId()) && Password.equals(UserList.get(i).getPassword()))
-                {
-                    return true;
+                if(Username.equals(UserList.get(i).getId()) && Password.equals(UserList.get(i).getPassword())) {
+                    if(UserList.get(i).getAdminCheck() == true){
+                        return "admin";
+                    }
+                    else{
+                        return "standard user";
+                    }
                 }
             }
-            return false;
+            return "not found";
     }
 
     public void AddAKameti(String KametiName, String frequency, String Rule1, String Rule2, String Rule3, String Rule4, String Rule5, String isPrivate, int KametiPayout, LocalDate LC,int kametiDuration) {
@@ -108,9 +116,29 @@ public class KametiManagementSystem {
         K.setIsPrivate(isPrivate);
         K.setTotalPayout(KametiPayout);
         K.setStartDate(LC);
-        K.setTotalMembers(10);
-        K.setIndividualShare(10000);
-        K.setId(9);
+        K.setIndividualShare(0);
+        if(frequency.equals("After 15 Days")){
+            System.out.println("Freq is fortnightly");
+
+
+            K.setTotalMembers(kametiDuration*2);
+            K.setIndividualShare(KametiPayout/K.getTotalMembers());
+            System.out.println("Total Payout " + KametiPayout);
+            System.out.println("Total Members " + kametiDuration*2);
+            System.out.println("Individual Share " + K.getIndividualShare());
+        }
+        else if (frequency.equals("Monthly")){
+            System.out.println("Freq is monthly");
+            K.setTotalMembers(kametiDuration);
+            K.setIndividualShare(KametiPayout/K.getTotalMembers());
+
+            System.out.println("Total Payout " + KametiPayout);
+            System.out.println("Total Members " + kametiDuration);
+            System.out.println("Individual Share " + K.getIndividualShare());
+        }
+
+
+        //K.setId(5);
         SignedInUser signedInUser = SignedInUser.getInstance();
         K.setKametiHead(signedInUser.getUser());
         session.save(K);
@@ -119,7 +147,7 @@ public class KametiManagementSystem {
 
     }
 
-    public boolean checkUser(String username) {
+    /*public boolean checkUser(String username) {
 
         Configuration con = new Configuration();
         con.configure().addAnnotatedClass(Kameti.class);
@@ -127,7 +155,7 @@ public class KametiManagementSystem {
         SessionFactory sf= con.buildSessionFactory();
         Session session= sf.openSession();
         Transaction trans= session.beginTransaction();
-        List<User> UserList = session.createQuery("FROM User").getResultList();
+        List<User> UserList = session.createQuery("FROM User", User).getResultList();
 
         boolean found = false;
 
@@ -139,7 +167,7 @@ public class KametiManagementSystem {
 
         return false;
 
-    }
+    }*/
 
     public User retrieveUser(String username, String password) {
         Configuration con = new Configuration();
@@ -233,4 +261,82 @@ public class KametiManagementSystem {
     }
 
 
+    public ArrayList<String> retrieveOwnedKametis() {
+        Configuration con = new Configuration();
+        con.configure().addAnnotatedClass(Member.class);
+
+        SessionFactory sf= con.buildSessionFactory();
+        Session session= sf.openSession();
+        Transaction trans= session.beginTransaction();
+        List<Kameti> kametiList = session.createQuery("FROM Kameti").getResultList();
+        ArrayList<String> kametiStringList = new ArrayList<>();
+
+        SignedInUser signedInUser = SignedInUser.getInstance();
+        String username = signedInUser.getUser().getId();
+
+
+        for(int i=0;i<kametiList.size();i++)
+        {
+            if(kametiList.get(i).getKametiHead().getId().equals(username)){
+                kametiStringList.add(kametiList.get(i).getId() + "          "+kametiList.get(i).getKametiName() + "          " +kametiList.get(i).getKametiDuration() + "          " + kametiList.get(i).getTotalPayout());
+                //System.out.println(memberList.get(i).getKametiId().getId() + "          "+memberList.get(i).getKametiId().getKametiName() + "          " +memberList.get(i).getKametiId().getKametiDuration() + "          " + memberList.get(i).getKametiId().getTotalPayout());
+            }
+
+
+        }
+        return kametiStringList;
+    }
+
+    public User retrieveUserWithId(String username) {
+
+        Configuration con = new Configuration();
+        con.configure().addAnnotatedClass(User.class);
+
+        SessionFactory sf= con.buildSessionFactory();
+        Session session= sf.openSession();
+        Transaction trans= session.beginTransaction();
+        List<User> UserList = session.createQuery("FROM User").getResultList();
+
+        for(int i=0;i<UserList.size();i++)
+        {
+            System.out.println(UserList.get(i).getId());
+            System.out.println(UserList.get(i).getPassword());
+            if(username.equals(UserList.get(i).getId()))
+            {
+                return UserList.get(i);
+            }
+        }
+        return null;
+    }
+
+    public void addComplaintToDb(Kameti kameti, User user, User offender, String desc) {
+
+
+        Configuration con = new Configuration();
+        con.configure().addAnnotatedClass(Complaint.class);
+
+        SessionFactory sf= con.buildSessionFactory();
+        Session session= sf.openSession();
+        Transaction trans= session.beginTransaction();
+        Complaint complaint = new Complaint();
+        complaint.setKametiId(kameti);
+        complaint.setReporter(user);
+        complaint.setOffender(offender);
+        complaint.setDescription(desc);
+
+/*
+
+        Member member= new Member();
+
+        member.setKametiId(kametiToBeJoined);
+        member.setUsername(user);
+        member.setTurnNumber(-1);
+        member.setIsHead("false");
+        member.setHasPaid("false");*/
+        session.save(complaint);
+
+
+        trans.commit();
+
+    }
 }

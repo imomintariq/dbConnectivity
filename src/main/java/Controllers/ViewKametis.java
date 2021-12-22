@@ -37,6 +37,32 @@ public class ViewKametis implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb){
         selectedKameti = new ArrayList<>();
+        loadJoinedKametis();
+        loadCreatedKametis();
+    }
+
+    private void loadCreatedKametis() {
+        KametiManagementSystem kms = new KametiManagementSystem();
+        ArrayList<String> k = kms.retrieveOwnedKametis();
+        ownedKametiList.getItems().addAll(k);
+        ownedKametiList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                selectedRow = ownedKametiList.getSelectionModel().getSelectedItem();//getting current selection
+
+                selectedKameti.clear();
+                StringTokenizer st = new StringTokenizer(selectedRow," ");
+                while (st.hasMoreTokens()) {
+                    selectedKameti.add(st.nextToken());
+                }
+                System.out.println("Selected kameti Id = " + selectedKameti.get(0) + ".");
+
+            }
+        });
+    }
+
+    private void loadJoinedKametis() {
         KametiManagementSystem kms = new KametiManagementSystem();
         ArrayList<String> k = kms.retrieveJoinedKametis();
         joinedkametiList.getItems().addAll(k);
@@ -52,9 +78,6 @@ public class ViewKametis implements Initializable {
                     selectedKameti.add(st.nextToken());
                 }
                 System.out.println("Selected kameti Id = " + selectedKameti.get(0) + ".");
-                //System.out.println();
-
-                //System.out.println(currentCandidate);
 
             }
         });
@@ -65,7 +88,7 @@ public class ViewKametis implements Initializable {
 
         Main main = new Main();
         try {
-            main.changeScene("DashBoard.fxml");
+            main.changeScene("StandardUserPages/DashBoard.fxml");
         }
         catch(Exception e){
             System.out.println("Sign Up Page not Loaded");
@@ -75,6 +98,14 @@ public class ViewKametis implements Initializable {
 
     @FXML
     void chooseButtonClicked(MouseEvent event) {
+
+        Main main = new Main();
+        try {
+            main.changeScene("StandardUserPages/KametiDesc.fxml");
+        }
+        catch(Exception e){
+            System.out.println("KametiDesc Page not Loaded");
+        }
 
 
     }

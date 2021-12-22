@@ -37,7 +37,7 @@ public class DashBoard implements Initializable {
     {
         Main main = new Main();
         try {
-            main.changeScene("CreateAKameti.fxml");
+            main.changeScene("StandardUserPages/CreateAKameti.fxml");
         }
         catch(Exception e){
             System.out.println("Create A Kameti Page not Loaded");
@@ -50,7 +50,7 @@ public class DashBoard implements Initializable {
     {
         Main main = new Main();
         try {
-            main.changeScene("JoinAKameti.fxml");
+            main.changeScene("StandardUserPages/JoinAKameti.fxml");
         }
         catch(Exception e){
             System.out.println("Join A Kameti Page not Loaded");
@@ -61,10 +61,11 @@ public class DashBoard implements Initializable {
     void viewKametisButtonClicked(MouseEvent event) {
         Main main = new Main();
         try {
-            main.changeScene("ViewKametis.fxml");
+            System.out.println("View Kametis button clicked!!");
+            main.changeScene("StandardUserPages/ViewKametis.fxml");
         }
         catch(Exception e){
-            System.out.println("Log In Page not Loaded");
+            System.out.println("View Kametis Page not Loaded");
         }
 
     }
@@ -80,26 +81,24 @@ public class DashBoard implements Initializable {
         }
     }
 
-    @FXML
-    void helpButtonClicked(MouseEvent event) {
-        Main main = new Main();
-        try {
-            main.changeScene("Help.fxml");
-        }
-        catch(Exception e){
-            System.out.println("Help Page not Loaded");
-        }
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         SignedInUser signedInUser = SignedInUser.getInstance();
 
-        System.out.println("Signed In User = " + signedInUser.getUser().getFirstName());
+        System.out.println("Signed In User = " + signedInUser.getUser().getFirstName() + " " + signedInUser.getUser().getLastName());
         //signedInUserLabel = new Label(signedInUser.getUser().getFirstName());
         //signedInUserLabel.setVisible(true);
-        signedInUserLabel.setText("Hello " + signedInUser.getUser().getFirstName());
+        signedInUserLabel.setText("Welcome " + signedInUser.getUser().getFirstName() + " " + signedInUser.getUser().getLastName());
         signedInUserLabel.setVisible(true);
+    }
+    public void reportButtonClicked(MouseEvent mouseEvent) {
+        Main main = new Main();
+        try {
+            main.changeScene("StandardUserPages/FileComplaintPage.fxml");
+        }
+        catch(Exception e){
+            System.out.println("Complaint Page not Loaded");
+        }
     }
 }

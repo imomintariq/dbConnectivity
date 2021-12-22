@@ -31,7 +31,7 @@ public class LogIn {
     @FXML
     void SignInButtonClicked(MouseEvent event) {
         KametiManagementSystem kms = new KametiManagementSystem();
-        boolean logIn = kms.LogIn(username.getText(), password.getText());
+        String logIn = kms.LogIn(username.getText(), password.getText());
         try {
             checkLogin(logIn);
 
@@ -62,11 +62,21 @@ public class LogIn {
                     KametiManagementSystem kms = new KametiManagementSystem();
                     SignedInUser signedInUser = SignedInUser.getInstance();
                     signedInUser.setUser(kms.retrieveUser(username.getText(),password.getText()));
-                    main.changeScene("DashBoard.fxml");
+                    //main.changeScene("DashBoard.fxml");
+                    main.changeScene("StandardUserPages/DashBoard.fxml");
                 } catch (Exception e) {
-                    System.out.println("Log In Page not Loaded");
+                    System.out.println("Dashboard Page not Loaded");
                 }
-            } else {
+            }
+            else if(flag.equals("admin")){
+                Main main = new Main();
+                try {
+                    main.changeScene("AdminPages/AdminDashBoard.fxml");
+                } catch (Exception e) {
+                    System.out.println("Admin Dashboard Page not Loaded");
+                }
+            }
+            else {
                 System.out.println("Incorrect Username or Password");
                 throw new LogInException("Incorrect Username or Password");
             }
