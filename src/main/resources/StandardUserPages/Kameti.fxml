@@ -16,7 +16,7 @@
    <children>
       <Pane prefHeight="450.0" prefWidth="630.0">
          <children>
-            <Text fill="#c1121c" layoutX="346.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kameti Description">
+            <Text fill="#c1121c" layoutX="346.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kameti Description">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>

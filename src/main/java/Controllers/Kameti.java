@@ -1,5 +1,6 @@
 package Controllers;
 
+import Main.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -31,7 +32,12 @@ public class Kameti {
 
     @FXML
     void backButtonClicked(MouseEvent event) {
-
+        Main main = new Main();
+        try {
+            main.changeScene("StandardUserPages/ViewKametis.fxml");
+        } catch (Exception e) {
+            System.out.println("Dashboard Page not Loaded");
+        }
     }
 
     @FXML
