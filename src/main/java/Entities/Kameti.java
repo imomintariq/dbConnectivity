@@ -1,5 +1,10 @@
 package Entities;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -55,6 +60,33 @@ public class Kameti {
     @ManyToOne
     @JoinColumn(name = "kametiHead")
     private User kametiHead;
+
+    public void addMember(User user){
+
+        Configuration con = new Configuration();
+        con.configure().addAnnotatedClass(Member.class);
+
+        SessionFactory sf= con.buildSessionFactory();
+        Session session= sf.openSession();
+        Transaction trans= session.beginTransaction();
+
+
+        Member member= new Member();
+
+        member.setKametiId(this);
+        member.setUsername(user);
+        member.setTurnNumber(-1);
+        member.setIsHead("false");
+        member.setHasPaid("false");
+        session.save(member);
+
+
+        trans.commit();
+    }
+
+    public void generateTurns(){
+
+    }
 
     public User getKametiHead() {
         return kametiHead;

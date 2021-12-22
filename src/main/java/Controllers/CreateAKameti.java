@@ -1,5 +1,6 @@
 package Controllers;
 
+import Exceptions.ProgressLostException;
 import Main.KametiManagementSystem;
 import Main.Main;
 import javafx.beans.value.ChangeListener;
@@ -16,17 +17,19 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CreateAKameti implements Initializable {
-
+    @FXML
+    private Label backButtonWarningLabel;
     @FXML
     private DatePicker DatePickerNote;
 
     @FXML
     private Button backButton;
-
+    public boolean Warning = false;
     @FXML
     private CheckBox isPrivateCheck;
 
@@ -63,13 +66,13 @@ public class CreateAKameti implements Initializable {
     String frequency;
 
     @FXML
-    void backButtonClicked(MouseEvent event) {
-        Main main = new Main();
+    void backButtonClicked(MouseEvent event) throws IOException {
+
         try {
-            main.changeScene("StandardUserPages/DashBoard.fxml");
+            BackButtonWarning(Warning);
         }
-        catch(Exception e){
-            System.out.println("Dash Board Page not Loaded");
+        catch (Exception e) {
+                Warning = true;
         }
     }
 
@@ -162,6 +165,20 @@ public class CreateAKameti implements Initializable {
 
             }
         });
+
+    }
+    public void  BackButtonWarning(boolean Warning) throws ProgressLostException, IOException {
+        if(Warning == false)
+        {
+            backButtonWarningLabel.setText("If you go back, All of your progress will be Lost!");
+            backButtonWarningLabel.setVisible(true);
+            throw new ProgressLostException("Progress will be lost");
+        }
+        else {
+            System.out.println("Decision Made");
+            Main main = new Main();
+            main.changeScene("StandardUserPages/DashBoard.fxml");
+        }
 
     }
 }

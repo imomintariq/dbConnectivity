@@ -41,13 +41,13 @@
             <PasswordField fx:id="password" layoutX="371.0" layoutY="262.0" prefHeight="34.0" prefWidth="149.0" promptText="Password" />
             <ImageView fitHeight="138.0" fitWidth="126.0" layoutX="382.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/personIcon.png" />
+                  <Image url="@../images/personIcon.png" />
                </image>
             </ImageView>
             <Text layoutX="339.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not on myKameti yet?" />
             <ImageView fitHeight="286.0" fitWidth="451.0" layoutX="-99.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                <image>
-                  <Image url="@images/sideImage.jpg" />
+                  <Image url="@../images/sideImage.jpg" />
                </image>
             </ImageView>
             <Label fx:id="incorrectTextLabel" layoutX="371.0" layoutY="315.0" />

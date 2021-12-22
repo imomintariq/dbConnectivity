@@ -3,6 +3,7 @@ package Controllers;
 
 import Entities.User;
 import Exceptions.LogInException;
+import Exceptions.SignUpException;
 import Main.KametiManagementSystem;
 import Main.Main;
 import Utility.SignedInUser;
@@ -53,7 +54,7 @@ public class SignUp {
     void backButtonClicked(MouseEvent event) {
         Main main = new Main();
         try {
-            main.changeScene("LogIn.fxml");
+            main.changeScene("StandardUserPages/LogIn.fxml");
         } catch (Exception e) {
             System.out.println("Log In Page not Loaded");
         }
@@ -80,7 +81,7 @@ public class SignUp {
         }
     }
 
-    boolean checkSingUp(User U1, User U2) throws LogInException, IOException {
+    boolean checkSingUp(User U1, User U2) throws LogInException, IOException, SignUpException {
         boolean returnFlag = false;
         if(U1 != null)
         {
@@ -96,13 +97,24 @@ public class SignUp {
         }
         if(password.getText().equals(confirmPassword.getText())!= true)
         {
-            ExceptionText.setText("Password and Confirmed Password do not match!");
-           System.out.println("");
-           returnFlag = true;
+            ExceptionText.setText("Passowrd and Confirmed password do not Match!");
+            ExceptionText.setVisible(true);
+            throw new SignUpException("Same Username already exists");
         }
         if(returnFlag == false) {
             ExceptionText.setText("Sign Up Successful");
             ExceptionText.setVisible(true);
+            SignedInUser signedInUser = SignedInUser.getInstance();
+            signedInUser.setUser(U2);
+            //
+            U2.setCnic(cnic.getText());
+            U2.setFirstName(firstName.getText());
+            U2.setLastName(lastName.getText());
+            U2.setEmail(email.getText());
+            U2.setId(username.getText());
+            U2.setPhoneNumber(phoneNumber.getText());
+            U2.setPassword(password.getText());
+            //
             String _password = password.getText();
             String _email = email.getText();
             String _cnic = cnic.getText();
@@ -112,8 +124,7 @@ public class SignUp {
             String _confirmedPassword = confirmPassword.getText();
             String _username = username.getText();
             KametiManagementSystem kms = new KametiManagementSystem();
-            SignedInUser signedInUser = SignedInUser.getInstance();
-            signedInUser.setUser(U2);  kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword,false);
+            kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword,false);
             FileWriter Fr = new FileWriter("Users.txt", true);
             BufferedWriter br = new BufferedWriter(Fr);
             String toWrite = "";
@@ -139,7 +150,7 @@ public class SignUp {
 
             Main main = new Main();
             try {
-                main.changeScene("LogIn.fxml");
+                main.changeScene("StandardUserPages/DashBoard.fxml");
             } catch (Exception e) {
                 System.out.println("Log In Page not Loaded");
             }
