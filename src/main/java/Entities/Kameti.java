@@ -4,7 +4,9 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "kameti")
+@Table(name = "kameti", indexes = {
+        @Index(name = "kametiHeadFK_idx", columnList = "kametiHead")
+})
 public class Kameti {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -44,11 +46,23 @@ public class Kameti {
     @Column(name = "isPrivate", nullable = false, length = 45)
     private String isPrivate;
 
-    @Column(name = "indivisualShare", nullable = false)
-    private Integer indivisualShare;
+    @Column(name = "individualShare", nullable = false)
+    private Integer individualShare;
 
     @Column(name = "totalMembers", nullable = false)
     private Integer totalMembers;
+
+    @ManyToOne
+    @JoinColumn(name = "kametiHead")
+    private User kametiHead;
+
+    public User getKametiHead() {
+        return kametiHead;
+    }
+
+    public void setKametiHead(User kametiHead) {
+        this.kametiHead = kametiHead;
+    }
 
     public Integer getTotalMembers() {
         return totalMembers;
@@ -58,12 +72,12 @@ public class Kameti {
         this.totalMembers = totalMembers;
     }
 
-    public Integer getIndivisualShare() {
-        return indivisualShare;
+    public Integer getIndividualShare() {
+        return individualShare;
     }
 
-    public void setIndivisualShare(Integer indivisualShare) {
-        this.indivisualShare = indivisualShare;
+    public void setIndividualShare(Integer individualShare) {
+        this.individualShare = individualShare;
     }
 
     public String getIsPrivate() {

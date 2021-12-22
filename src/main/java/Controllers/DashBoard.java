@@ -1,11 +1,17 @@
 package Controllers;
 
 import Main.Main;
+import Utility.SignedInUser;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
-public class DashBoard {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class DashBoard implements Initializable {
 
     @FXML
     private Button createKametiButton;
@@ -21,6 +27,10 @@ public class DashBoard {
 
     @FXML
     private Button viewKametisButton;
+
+
+    @FXML
+    private Label signedInUserLabel;
 
     @FXML
     void createKametiButtonClicked(MouseEvent event)
@@ -49,6 +59,13 @@ public class DashBoard {
 
     @FXML
     void viewKametisButtonClicked(MouseEvent event) {
+        Main main = new Main();
+        try {
+            main.changeScene("ViewKametis.fxml");
+        }
+        catch(Exception e){
+            System.out.println("Log In Page not Loaded");
+        }
 
     }
 
@@ -74,6 +91,17 @@ public class DashBoard {
         }
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        SignedInUser signedInUser = SignedInUser.getInstance();
+
+        System.out.println("Signed In User = " + signedInUser.getUser().getFirstName());
+        //signedInUserLabel = new Label(signedInUser.getUser().getFirstName());
+        //signedInUserLabel.setVisible(true);
+        signedInUserLabel.setText("Hello " + signedInUser.getUser().getFirstName());
+        signedInUserLabel.setVisible(true);
+    }
     public void reportButtonClicked(MouseEvent mouseEvent) {
     }
 }
