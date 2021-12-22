@@ -36,8 +36,8 @@
                   <Image url="@../images/heretohelp.png" />
                </image>
             </ImageView>
-            <TextField fx:id="username" layoutX="279.0" layoutY="78.0" prefHeight="25.0" prefWidth="324.0" promptText="Your Username" />
-            <TextField fx:id="offendersUsername" layoutX="279.0" layoutY="182.0" prefHeight="25.0" prefWidth="324.0" promptText="Offender's Username" />
+            <TextField fx:id="reporter" layoutX="279.0" layoutY="78.0" prefHeight="25.0" prefWidth="324.0" promptText="Your Username" />
+            <TextField fx:id="offender" layoutX="279.0" layoutY="182.0" prefHeight="25.0" prefWidth="324.0" promptText="Offender's Username" />
             <TextField fx:id="kametiCode" layoutX="279.0" layoutY="129.0" prefHeight="25.0" prefWidth="324.0" promptText="Kameti ID" />
             <Text layoutX="366.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We welcome your feedback.">
                <font>

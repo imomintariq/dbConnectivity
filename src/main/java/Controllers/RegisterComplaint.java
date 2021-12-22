@@ -10,6 +10,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
 public class RegisterComplaint {
 
     @FXML
@@ -19,13 +22,13 @@ public class RegisterComplaint {
     private TextField kametiCode;
 
     @FXML
-    private TextField offendersUsername;
+    private TextField offender;
 
     @FXML
     private Button submitButton;
 
     @FXML
-    private TextField username;
+    private TextField reporter;
 
     @FXML
     void submitButtonClicked(MouseEvent event) {
@@ -33,11 +36,11 @@ public class RegisterComplaint {
         KametiManagementSystem kms = new KametiManagementSystem();
         Kameti kameti = kms.getKametiWithId(kametiCode.getText());
         if(kameti != null) {
-            User user = kms.retrieveUserWithId(username.getText());
+            User user = kms.retrieveUserWithId(reporter.getText());
             if (user != null) {
-                User offender = kms.retrieveUserWithId(offendersUsername.getText());
-                if(offender != null){
-                    kms.addComplaintToDb(kameti, user, offender,complaint.getText());
+                User _offender = kms.retrieveUserWithId(offender.getText());
+                if(_offender != null){
+                    kms.addComplaintToDb(kameti, user, _offender,complaint.getText());
                 }
 
             }

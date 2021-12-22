@@ -52,7 +52,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Label fx:id="NoKametiSelectedLabel" alignment="CENTER" layoutX="198.0" layoutY="371.0" prefHeight="17.0" prefWidth="249.0" />
+            <Label fx:id="NoKametiSelectedLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="198.0" layoutY="371.0" prefHeight="17.0" prefWidth="249.0" />
          </children>
       </Pane>
    </children>

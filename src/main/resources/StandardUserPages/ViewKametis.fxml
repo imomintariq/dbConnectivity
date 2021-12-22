@@ -2,80 +2,72 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="440.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ViewKametis">
+<AnchorPane prefHeight="450.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ViewKametis">
    <children>
-      <Pane layoutX="-2.0" layoutY="111.0" prefHeight="200.0" prefWidth="630.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Pane layoutX="6.0" prefHeight="459.0" prefWidth="634.0">
+      <Pane layoutX="6.0" prefHeight="450.0" prefWidth="630.0">
          <children>
-            <ImageView fitHeight="536.0" fitWidth="691.0" opacity="0.16" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/kameti.jpeg" />
-               </image>
-            </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fbaf3e" height="36.0" layoutX="14.0" layoutY="95.0" stroke="#f8f8f8" strokeType="INSIDE" strokeWidth="0.0" width="284.0" />
-            <ListView fx:id="ownedKametiList" layoutX="14.0" layoutY="130.0" prefHeight="244.0" prefWidth="284.0" style="-fx-background-color: E3482D;" />
-            <Text fill="WHITE" layoutX="37.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fbaf3e" height="36.0" layoutX="18.0" layoutY="110.0" stroke="#f8f8f8" strokeType="INSIDE" strokeWidth="0.0" width="284.0" />
+            <ListView fx:id="ownedKametiList" layoutX="18.0" layoutY="145.0" prefHeight="217.0" prefWidth="284.0" style="-fx-background-color: E3482D;" />
+            <Text fill="WHITE" layoutX="41.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
                <font>
                   <Font name="Arial Bold Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="#c1121c" layoutX="14.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Created Kametis:">
+            <Text fill="#c1121c" layoutX="18.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kametis you have created:" wrappingWidth="284.0">
                <font>
-                  <Font name="System Bold" size="21.0" />
+                  <Font name="System Italic" size="17.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="125.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration">
-               <font>
-                  <Font name="Arial Bold Italic" size="15.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" layoutX="216.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payout">
+            <Text fill="WHITE" layoutX="129.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration">
                <font>
                   <Font name="Arial Bold Italic" size="15.0" />
                </font>
             </Text>
-            <Button fx:id="backButton" layoutX="156.0" layoutY="384.0" mnemonicParsing="false" onMouseClicked="#backButtonClicked" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: E3482D;" text="Back to Dashboard" textFill="WHITE">
+            <Text fill="WHITE" layoutX="220.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payout">
+               <font>
+                  <Font name="Arial Bold Italic" size="15.0" />
+               </font>
+            </Text>
+            <Button fx:id="backButton" layoutX="156.0" layoutY="399.0" mnemonicParsing="false" onMouseClicked="#backButtonClicked" prefHeight="34.0" prefWidth="149.0" style="-fx-background-color: E3482D;" text="Back to Dashboard" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="chooseButton" layoutX="323.0" layoutY="384.0" mnemonicParsing="false" onMouseClicked="#chooseButtonClicked" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: E3482D;" text="Choose" textFill="WHITE">
+            <Button fx:id="chooseButton" layoutX="358.0" layoutY="399.0" mnemonicParsing="false" onMouseClicked="#chooseButtonClicked" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: E3482D;" text="Choose" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fbaf3e" height="36.0" layoutX="319.0" layoutY="95.0" stroke="#f8f8f8" strokeType="INSIDE" strokeWidth="0.0" width="284.0" />
-            <ListView fx:id="joinedkametiList" layoutX="319.0" layoutY="130.0" prefHeight="244.0" prefWidth="284.0" style="-fx-background-color: E3482D;" />
-            <Text fill="WHITE" layoutX="342.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fbaf3e" height="36.0" layoutX="323.0" layoutY="110.0" stroke="#f8f8f8" strokeType="INSIDE" strokeWidth="0.0" width="284.0" />
+            <ListView fx:id="joinedkametiList" layoutX="323.0" layoutY="145.0" prefHeight="217.0" prefWidth="284.0" style="-fx-background-color: E3482D;" />
+            <Text fill="WHITE" layoutX="346.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
                <font>
                   <Font name="Arial Bold Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="430.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration">
+            <Text fill="WHITE" layoutX="434.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration">
                <font>
                   <Font name="Arial Bold Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="521.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payout">
+            <Text fill="WHITE" layoutX="525.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payout">
                <font>
                   <Font name="Arial Bold Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="#c1121c" layoutX="249.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Kametis">
+            <Text fill="#c1121c" layoutX="323.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kametis you have joined:" wrappingWidth="284.0">
                <font>
-                  <Font name="System Bold" size="21.0" />
+                  <Font name="System Italic" size="17.0" />
                </font>
             </Text>
-            <Text fill="#c1121c" layoutX="319.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Joined Kametis:">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faf9f6" height="66.0" layoutX="-6.0" stroke="#faf9f6" strokeType="INSIDE" width="636.0" />
+            <Text fill="#c1121c" layoutX="246.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Join A Kameti">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>

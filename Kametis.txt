@@ -9,3 +9,4 @@ asdasd  -  12000  -  false  -  true  -  true  -  false  -  true  -  Monthly  -  
 momiinininasd  -  12000  -  false  -  true  -  false  -  false  -  true  -  Monthly  -  Private Kameti  -  12  -  Private Kameti  -  2021-12-22  -  
 adasd  -  12000  -  true  -  false  -  true  -  false  -  true  -  After 15 Days  -  Private Kameti  -  12  -  Private Kameti  -  2021-12-23  -  
 myKameti  -  12000  -  true  -  true  -  true  -  true  -  true  -  Monthly  -  Private Kameti  -  12  -  Private Kameti  -  2021-12-29  -  
+momin's Kameti  -  5000  -  true  -  true  -  false  -  true  -  false  -  Monthly  -  Private Kameti  -  12  -  Private Kameti  -  2021-12-23  -  
