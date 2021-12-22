@@ -26,7 +26,7 @@ public class AdminDashboard {
     void SignOutButtonClicked(MouseEvent event) {
         Main main = new Main();
         try {
-            main.changeScene("LogIn.fxml");
+            main.changeScene("StandardUserPages/LogIn.fxml");
         }
         catch(Exception e){
             System.out.println("Log In Page not Loaded");

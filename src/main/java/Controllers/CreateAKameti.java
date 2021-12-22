@@ -177,7 +177,7 @@ public class CreateAKameti implements Initializable {
         else {
             System.out.println("Decision Made");
             Main main = new Main();
-            main.changeScene("DashBoard.fxml");
+            main.changeScene("StandardUserPages/DashBoard.fxml");
         }
 
     }

@@ -74,7 +74,7 @@ public class DashBoard implements Initializable {
     void dashBoardBackButtonClicked(MouseEvent event) {
         Main main = new Main();
         try {
-            main.changeScene("LogIn.fxml");
+            main.changeScene("StandardUserPages/LogIn.fxml");
         }
         catch(Exception e){
             System.out.println("Log In Page not Loaded");

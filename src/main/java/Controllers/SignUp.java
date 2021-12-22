@@ -54,7 +54,7 @@ public class SignUp {
     void backButtonClicked(MouseEvent event) {
         Main main = new Main();
         try {
-            main.changeScene("LogIn.fxml");
+            main.changeScene("StandardUserPages/LogIn.fxml");
         } catch (Exception e) {
             System.out.println("Log In Page not Loaded");
         }
@@ -81,7 +81,7 @@ public class SignUp {
         }
     }
 
-    boolean checkSingUp(User U1, User U2) throws LogInException, IOException {
+    boolean checkSingUp(User U1, User U2) throws LogInException, IOException, SignUpException {
         boolean returnFlag = false;
         if(U1 != null)
         {
@@ -124,8 +124,7 @@ public class SignUp {
             String _confirmedPassword = confirmPassword.getText();
             String _username = username.getText();
             KametiManagementSystem kms = new KametiManagementSystem();
-            SignedInUser signedInUser = SignedInUser.getInstance();
-            signedInUser.setUser(U2);  kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword,false);
+            kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword,false);
             FileWriter Fr = new FileWriter("Users.txt", true);
             BufferedWriter br = new BufferedWriter(Fr);
             String toWrite = "";
@@ -151,7 +150,7 @@ public class SignUp {
 
             Main main = new Main();
             try {
-                main.changeScene("LogIn.fxml");
+                main.changeScene("StandardUserPages/DashBoard.fxml");
             } catch (Exception e) {
                 System.out.println("Log In Page not Loaded");
             }

@@ -47,16 +47,16 @@ public class LogIn {
     void signUpButtonClicked(MouseEvent event) {
         Main main = new Main();
         try {
-            main.changeScene("SignUp.fxml");
+            main.changeScene("StandardUserPages/SignUp.fxml");
         }
         catch(Exception e){
             System.out.println("Sign Up Page not Loaded");
         }
     }
         @FXML
-     void checkLogin(boolean flag) throws LogInException
+     void checkLogin(String flag) throws LogInException
         {
-            if (flag == true) {
+            if (flag.equals("standard user") == true) {
                 Main main = new Main();
                 try {
                     KametiManagementSystem kms = new KametiManagementSystem();
