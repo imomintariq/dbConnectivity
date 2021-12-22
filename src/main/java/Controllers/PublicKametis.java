@@ -91,6 +91,7 @@ public class PublicKametis implements Initializable {
         {
             NoKametiSelectedLabel.setText("Please select a Kameti!");
             NoKametiSelectedLabel.setVisible(true);
+            throw new KametiNotSelectedException("Kameti has not been selected");
         }
         else
         {KametiManagementSystem kms = new KametiManagementSystem();

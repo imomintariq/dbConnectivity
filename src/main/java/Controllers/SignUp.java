@@ -3,6 +3,7 @@ package Controllers;
 
 import Entities.User;
 import Exceptions.LogInException;
+import Exceptions.SignUpException;
 import Main.KametiManagementSystem;
 import Main.Main;
 import Utility.SignedInUser;
@@ -63,46 +64,56 @@ public class SignUp {
     void registerButtonClicked(MouseEvent event) throws IOException, LogInException {
         String _username = username.getText();
         String _passWord = password.getText();
-        User user = new User();
+        User user1 = new User();
         User user2 = new User();
         KametiManagementSystem kms = new KametiManagementSystem();
-        user = kms.retrieveUser(_username, _passWord);
+        user1 = kms.retrieveUser(_username, _passWord);
         boolean flag = false;
 
         try {
-            flag = checkSingUp(user, user2);
+            checkSingUp(user1, user2);
         } catch (Exception e) {
             System.out.println("Sign Up Unsuccesful");
-        }
-        if (flag == false) {
-
-
+            ExceptionText.setText("Password and Confirmed Password do not match!");
         }
     }
 
-    boolean checkSingUp(User U1, User U2) throws LogInException, IOException {
+    boolean checkSingUp(User U1, User U2) throws LogInException, IOException, SignUpException {
         boolean returnFlag = false;
         if(U1 != null)
         {
             System.out.println("A person with the same username has already been registered");
-            returnFlag = true;
             ExceptionText.setText("A person with the same username already exists");
+            ExceptionText.setVisible(true);
+            throw new SignUpException("Same Username already exists");
+
         }
         if(cnic.getText().length() < 13)
         {
             ExceptionText.setText("CNIC Must be valid (13 characters long)");
-            System.out.println("CNIC Must be valid (13 characters long)");
-            returnFlag = true;
+            ExceptionText.setVisible(true);
+            throw new SignUpException("Same Username already exists");
         }
         if(password.getText().equals(confirmPassword.getText())!= true)
         {
-            ExceptionText.setText("Password and Confirmed Password do not match!");
-           System.out.println("");
-           returnFlag = true;
+            ExceptionText.setText("Passowrd and Confirmed password do not Match!");
+            ExceptionText.setVisible(true);
+            throw new SignUpException("Same Username already exists");
         }
         if(returnFlag == false) {
             ExceptionText.setText("Sign Up Successful");
             ExceptionText.setVisible(true);
+            SignedInUser signedInUser = SignedInUser.getInstance();
+            signedInUser.setUser(U2);
+            //
+            U2.setCnic(cnic.getText());
+            U2.setFirstName(firstName.getText());
+            U2.setLastName(lastName.getText());
+            U2.setEmail(email.getText());
+            U2.setId(username.getText());
+            U2.setPhoneNumber(phoneNumber.getText());
+            U2.setPassword(password.getText());
+            //
             String _password = password.getText();
             String _email = email.getText();
             String _cnic = cnic.getText();
@@ -112,8 +123,8 @@ public class SignUp {
             String _confirmedPassword = confirmPassword.getText();
             String _username = password.getText();
             KametiManagementSystem kms = new KametiManagementSystem();
-            SignedInUser signedInUser = SignedInUser.getInstance();
-            signedInUser.setUser(U2);  kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword);
+            System.out.println(signedInUser.getUser().getFirstName());
+            kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword);
             FileWriter Fr = new FileWriter("Users.txt", true);
             BufferedWriter br = new BufferedWriter(Fr);
             String toWrite = "";

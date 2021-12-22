@@ -24,7 +24,7 @@ public class Main extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-/*        KametiManagementSystem kms = new KametiManagementSystem();
+/*      KametiManagementSystem kms = new KametiManagementSystem();
         kms.retrieveKametis();*/
         stg = stage;
         String fxmlPath = "LogIn.fxml";

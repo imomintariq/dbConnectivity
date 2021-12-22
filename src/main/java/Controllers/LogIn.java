@@ -1,5 +1,6 @@
 package Controllers;
 import Exceptions.LogInException;
+import Exceptions.SignUpException;
 import Main.KametiManagementSystem;
 import Main.Main;
 import Utility.SignedInUser;
@@ -36,6 +37,8 @@ public class LogIn {
 
         } catch (Exception e) {
             System.out.println("Oh No! You do not seemed to be signed up" + e);
+            incorrectTextLabel.setText("Incorrect Username or Password");
+            incorrectTextLabel.setVisible(true);
         }
 
     }
@@ -65,8 +68,7 @@ public class LogIn {
                 }
             } else {
                 System.out.println("Incorrect Username or Password");
-                incorrectTextLabel.setText("Incorrect Username or Password");
-                incorrectTextLabel.setVisible(true);
+                throw new LogInException("Incorrect Username or Password");
             }
 
         }

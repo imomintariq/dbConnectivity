@@ -109,8 +109,8 @@ public class KametiManagementSystem {
         K.setTotalPayout(KametiPayout);
         K.setStartDate(LC);
         K.setTotalMembers(10);
-        K.setIndividualShare(1000);
-        K.setId(5);
+        K.setIndividualShare(10000);
+        K.setId(9);
         SignedInUser signedInUser = SignedInUser.getInstance();
         K.setKametiHead(signedInUser.getUser());
         session.save(K);
