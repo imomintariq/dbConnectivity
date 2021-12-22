@@ -35,12 +35,24 @@ public class AdminDashboard {
 
     @FXML
     void viewComplaintsButtonClicked(MouseEvent event) {
-
+        Main main = new Main();
+        try {
+            main.changeScene("AdminPages/AllComplaints.fxml");
+        }
+        catch(Exception e){
+            System.out.println("Complaints List Page not Loaded");
+        }
     }
 
     @FXML
     void viewPrivateKametisButtonClicked(MouseEvent event) {
-
+        Main main = new Main();
+        try {
+            main.changeScene("AdminPages/PrivateKametisList.fxml");
+        }
+        catch(Exception e){
+            System.out.println("Private Kametis List Page not Loaded");
+        }
     }
 
     @FXML
