@@ -101,10 +101,10 @@ public class ViewKametis implements Initializable {
 
         Main main = new Main();
         try {
-            main.changeScene("StandardUserPages/KametiDesc.fxml");
+            main.changeScene("StandardUserPages/Kameti.fxml");
         }
         catch(Exception e){
-            System.out.println("KametiDesc Page not Loaded");
+            System.out.println("Kameti Page not Loaded");
         }
 
 
