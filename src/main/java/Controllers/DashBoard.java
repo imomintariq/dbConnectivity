@@ -81,28 +81,24 @@ public class DashBoard implements Initializable {
         }
     }
 
-    @FXML
-    void helpButtonClicked(MouseEvent event) {
-        Main main = new Main();
-        try {
-            main.changeScene("Help.fxml");
-        }
-        catch(Exception e){
-            System.out.println("Help Page not Loaded");
-        }
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         SignedInUser signedInUser = SignedInUser.getInstance();
 
-        System.out.println("Signed In User = " + signedInUser.getUser().getFirstName());
+        System.out.println("Signed In User = " + signedInUser.getUser().getFirstName() + " " + signedInUser.getUser().getLastName());
         //signedInUserLabel = new Label(signedInUser.getUser().getFirstName());
         //signedInUserLabel.setVisible(true);
-        signedInUserLabel.setText("Hello " + signedInUser.getUser().getFirstName());
+        signedInUserLabel.setText("Welcome " + signedInUser.getUser().getFirstName() + " " + signedInUser.getUser().getLastName());
         signedInUserLabel.setVisible(true);
     }
     public void reportButtonClicked(MouseEvent mouseEvent) {
+        Main main = new Main();
+        try {
+            main.changeScene("StandardUserPages/FileComplaintPage.fxml");
+        }
+        catch(Exception e){
+            System.out.println("Complaint Page not Loaded");
+        }
     }
 }

@@ -42,17 +42,17 @@
                   <Font name="Arial Bold Italic" size="15.0" />
                </font>
             </Text>
-            <Button fx:id="backButton" layoutX="176.0" layoutY="402.0" mnemonicParsing="false" onMouseClicked="#backButtonClicked" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: E3482D;" text="Back to Dashboard" textFill="WHITE">
+            <Button fx:id="backButton" layoutX="176.0" layoutY="397.0" mnemonicParsing="false" onMouseClicked="#backButtonClicked" prefHeight="34.0" prefWidth="149.0" style="-fx-background-color: E3482D;" text="Back to Dashboard" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="joinButton" layoutX="323.0" layoutY="402.0" mnemonicParsing="false" onMouseClicked="#joinButtonClicked" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: E3482D;" text="Join!!!" textFill="WHITE">
+            <Button fx:id="joinButton" layoutX="364.0" layoutY="397.0" mnemonicParsing="false" onMouseClicked="#joinButtonClicked" prefHeight="34.0" prefWidth="101.0" style="-fx-background-color: E3482D;" text="Join Now!" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Label fx:id="NoKametiSelectedLabel" layoutX="309.0" layoutY="373.0" />
+            <Label fx:id="NoKametiSelectedLabel" alignment="CENTER" layoutX="198.0" layoutY="371.0" prefHeight="17.0" prefWidth="249.0" />
          </children>
       </Pane>
    </children>

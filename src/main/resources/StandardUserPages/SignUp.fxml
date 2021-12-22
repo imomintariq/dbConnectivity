@@ -20,54 +20,54 @@
                   <Image url="@../images/sideImage.jpg" />
                </image>
             </ImageView>
-            <Text fill="#e3482d" layoutX="411.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign Up" textAlignment="CENTER" wrappingWidth="87.0">
+            <Text fill="#e3482d" layoutX="399.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign Up" textAlignment="CENTER" wrappingWidth="87.0">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <Button fx:id="registerButton" layoutX="496.0" layoutY="412.0" mnemonicParsing="false" onMouseClicked="#registerButtonClicked" prefHeight="34.0" prefWidth="87.0" style="-fx-background-color: E3482D;" text="Register" textFill="#f5f5f5">
+            <Button fx:id="registerButton" layoutX="468.0" layoutY="393.0" mnemonicParsing="false" onMouseClicked="#registerButtonClicked" prefHeight="34.0" prefWidth="87.0" style="-fx-background-color: E3482D;" text="Register" textFill="#f5f5f5">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="backButton" layoutX="348.0" layoutY="412.0" mnemonicParsing="false" onMouseClicked="#backButtonClicked" prefHeight="34.0" prefWidth="87.0" style="-fx-background-color: E3482D;" text="Back" textFill="WHITE">
+            <Button fx:id="backButton" layoutX="330.0" layoutY="393.0" mnemonicParsing="false" onMouseClicked="#backButtonClicked" prefHeight="34.0" prefWidth="87.0" style="-fx-background-color: E3482D;" text="Back" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <TextField fx:id="firstName" layoutX="294.0" layoutY="68.0" prefHeight="34.0" prefWidth="150.0" promptText="First Name">
+            <TextField fx:id="firstName" layoutX="282.0" layoutY="58.0" prefHeight="34.0" prefWidth="150.0" promptText="First Name">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="lastName" layoutX="464.0" layoutY="68.0" prefHeight="34.0" prefWidth="150.0" promptText="Last Name">
+            <TextField fx:id="lastName" layoutX="452.0" layoutY="58.0" prefHeight="34.0" prefWidth="150.0" promptText="Last Name">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="cnic" layoutX="294.0" layoutY="115.0" prefHeight="34.0" prefWidth="321.0" promptText="CNIC">
+            <TextField fx:id="cnic" layoutX="282.0" layoutY="105.0" prefHeight="34.0" prefWidth="321.0" promptText="CNIC">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="phoneNumber" layoutX="294.0" layoutY="160.0" prefHeight="34.0" prefWidth="321.0" promptText="Phone Number">
+            <TextField fx:id="phoneNumber" layoutX="282.0" layoutY="150.0" prefHeight="34.0" prefWidth="321.0" promptText="Phone Number">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="email" layoutX="294.0" layoutY="205.0" prefHeight="34.0" prefWidth="321.0" promptText="Email Address">
+            <TextField fx:id="email" layoutX="282.0" layoutY="195.0" prefHeight="34.0" prefWidth="321.0" promptText="Email Address">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="username" layoutX="295.0" layoutY="249.0" prefHeight="34.0" prefWidth="321.0" promptText="Username:">
+            <TextField fx:id="username" layoutX="283.0" layoutY="239.0" prefHeight="34.0" prefWidth="321.0" promptText="Username:">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="password" layoutX="294.0" layoutY="294.0" prefHeight="34.0" prefWidth="321.0" promptText="Password" />
-            <PasswordField fx:id="confirmPassword" layoutX="295.0" layoutY="339.0" prefHeight="34.0" prefWidth="321.0" promptText="Confirm Password" />
-            <Label fx:id="ExceptionText" layoutX="294.0" layoutY="385.0" />
+            <PasswordField fx:id="password" layoutX="282.0" layoutY="284.0" prefHeight="34.0" prefWidth="321.0" promptText="Password" />
+            <PasswordField fx:id="confirmPassword" layoutX="283.0" layoutY="329.0" prefHeight="34.0" prefWidth="321.0" promptText="Confirm Password" />
+            <Label fx:id="ExceptionText" alignment="CENTER" layoutX="304.0" layoutY="370.0" prefHeight="17.0" prefWidth="280.0" />
          </children>
       </Pane>
    </children>
