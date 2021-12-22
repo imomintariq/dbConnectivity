@@ -61,10 +61,11 @@ public class DashBoard implements Initializable {
     void viewKametisButtonClicked(MouseEvent event) {
         Main main = new Main();
         try {
-            main.changeScene("ViewKametis.fxml");
+            System.out.println("View Kametis button clicked!!");
+            main.changeScene("StandardUserPages/ViewKametis.fxml");
         }
         catch(Exception e){
-            System.out.println("Log In Page not Loaded");
+            System.out.println("View Kametis Page not Loaded");
         }
 
     }
