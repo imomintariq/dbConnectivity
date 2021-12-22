@@ -20,7 +20,7 @@ public class KametiManagementSystem {
 
     private boolean admin; //0 for admin; 1 for standard user.
 
-    public ArrayList<String> retrieveKametis() {
+    public ArrayList<String> retrievePublicKametis() {
 
         Configuration con = new Configuration();
         con.configure().addAnnotatedClass(Kameti.class);
@@ -37,8 +37,36 @@ public class KametiManagementSystem {
             System.out.println(kametiList.get(i).getKametiDuration());
             System.out.println(kametiList.get(i).getTotalPayout());
             //System.out.printf("%2d. %-20s $%.2f%n",  kametiList.get(i).getKametiName(), kametiList.get(i).getKametiDuration(), kametiList.get(i).getTotalPayout());
-            kametiStringList.add(kametiList.get(i).getId() + "          "+kametiList.get(i).getKametiName() + "          " +kametiList.get(i).getKametiDuration() + "          " + kametiList.get(i).getTotalPayout());
 
+            if(kametiList.get(i).getIsPrivate().equals("false")) {
+                kametiStringList.add(kametiList.get(i).getId() + "          " + kametiList.get(i).getKametiName() + "          " + kametiList.get(i).getKametiDuration() + "          " + kametiList.get(i).getTotalPayout());
+            }
+        }
+        return kametiStringList;
+
+    }
+
+    public ArrayList<String> retrievePrivateKametis() {
+
+        Configuration con = new Configuration();
+        con.configure().addAnnotatedClass(Kameti.class);
+
+        SessionFactory sf= con.buildSessionFactory();
+        Session session= sf.openSession();
+        Transaction trans= session.beginTransaction();
+        List<Kameti> kametiList = session.createQuery("FROM Kameti").getResultList();
+        ArrayList<String> kametiStringList = new ArrayList<>();
+
+        for(int i=0;i<kametiList.size();i++)
+        {
+            System.out.println(kametiList.get(i).getKametiName());
+            System.out.println(kametiList.get(i).getKametiDuration());
+            System.out.println(kametiList.get(i).getTotalPayout());
+            //System.out.printf("%2d. %-20s $%.2f%n",  kametiList.get(i).getKametiName(), kametiList.get(i).getKametiDuration(), kametiList.get(i).getTotalPayout());
+
+            if(kametiList.get(i).getIsPrivate().equals("true")) {
+                kametiStringList.add(kametiList.get(i).getId() + "          " + kametiList.get(i).getKametiName() + "          " + kametiList.get(i).getKametiDuration() + "          " + kametiList.get(i).getTotalPayout());
+            }
         }
         return kametiStringList;
 
@@ -260,7 +288,6 @@ public class KametiManagementSystem {
         }
         return kametiStringList;
     }
-
 
     public ArrayList<String> retrieveOwnedKametis() {
         Configuration con = new Configuration();
