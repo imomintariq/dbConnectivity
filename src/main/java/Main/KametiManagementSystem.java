@@ -114,6 +114,7 @@ public class KametiManagementSystem {
         K.setIsPrivate(isPrivate);
         K.setTotalPayout(KametiPayout);
         K.setStartDate(LC);
+        K.setIndividualShare(0);
         if(frequency.equals("After 15 Days")){
             System.out.println("Freq is fortnightly");
 
