@@ -1,6 +1,9 @@
 package Controllers;
 
+import Entities.Kameti;
+import Entities.User;
 import Main.Main;
+import Main.KametiManagementSystem;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -26,6 +29,19 @@ public class RegisterComplaint {
 
     @FXML
     void submitButtonClicked(MouseEvent event) {
+
+        KametiManagementSystem kms = new KametiManagementSystem();
+        Kameti kameti = kms.getKametiWithId(kametiCode.getText());
+        if(kameti != null) {
+            User user = kms.retrieveUserWithId(username.getText());
+            if (user != null) {
+                User offender = kms.retrieveUserWithId(offendersUsername.getText());
+                if(offender != null){
+                    kms.addComplaintToDb(kameti, user, offender,complaint.getText());
+                }
+
+            }
+        }
         Main main = new Main();
         try {
             main.changeScene("StandardUserPages/DashBoard.fxml");

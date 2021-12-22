@@ -99,6 +99,14 @@ public class ViewKametis implements Initializable {
     @FXML
     void chooseButtonClicked(MouseEvent event) {
 
+        Main main = new Main();
+        try {
+            main.changeScene("StandardUserPages/KametiDesc.fxml");
+        }
+        catch(Exception e){
+            System.out.println("KametiDesc Page not Loaded");
+        }
+
 
     }
 

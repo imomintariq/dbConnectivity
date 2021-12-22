@@ -1,9 +1,11 @@
 package Main;
 
+import Entities.Complaint;
 import Entities.Kameti;
 import Entities.Member;
 import Entities.User;
 import Utility.SignedInUser;
+import javafx.scene.control.TextField;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -283,5 +285,58 @@ public class KametiManagementSystem {
 
         }
         return kametiStringList;
+    }
+
+    public User retrieveUserWithId(String username) {
+
+        Configuration con = new Configuration();
+        con.configure().addAnnotatedClass(User.class);
+
+        SessionFactory sf= con.buildSessionFactory();
+        Session session= sf.openSession();
+        Transaction trans= session.beginTransaction();
+        List<User> UserList = session.createQuery("FROM User").getResultList();
+
+        for(int i=0;i<UserList.size();i++)
+        {
+            System.out.println(UserList.get(i).getId());
+            System.out.println(UserList.get(i).getPassword());
+            if(username.equals(UserList.get(i).getId()))
+            {
+                return UserList.get(i);
+            }
+        }
+        return null;
+    }
+
+    public void addComplaintToDb(Kameti kameti, User user, User offender, String desc) {
+
+
+        Configuration con = new Configuration();
+        con.configure().addAnnotatedClass(Complaint.class);
+
+        SessionFactory sf= con.buildSessionFactory();
+        Session session= sf.openSession();
+        Transaction trans= session.beginTransaction();
+        Complaint complaint = new Complaint();
+        complaint.setKametiId(kameti);
+        complaint.setReporter(user);
+        complaint.setOffender(offender);
+        complaint.setDescription(desc);
+
+/*
+
+        Member member= new Member();
+
+        member.setKametiId(kametiToBeJoined);
+        member.setUsername(user);
+        member.setTurnNumber(-1);
+        member.setIsHead("false");
+        member.setHasPaid("false");*/
+        session.save(complaint);
+
+
+        trans.commit();
+
     }
 }
