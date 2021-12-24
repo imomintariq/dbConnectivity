@@ -7,6 +7,7 @@ import org.hibernate.cfg.Configuration;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Random;
 
 @Entity
 @Table(name = "kameti", indexes = {
@@ -85,7 +86,9 @@ public class Kameti {
     }
 
     public void generateTurns(){
-
+        Random rand = new Random();
+        // nextInt as provided by Random is exclusive of the top value so you need to add 1
+        int randomNum = rand.nextInt((totalMembers - 1) + 1) + 1;
     }
 
     public User getKametiHead() {

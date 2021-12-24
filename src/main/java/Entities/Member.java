@@ -7,7 +7,7 @@ import javax.persistence.*;
         @Index(name = "username_idx", columnList = "username"),
         @Index(name = "kametiId_idx", columnList = "kametiId")
 })
-public class Member {
+public class Member extends User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "idmember", nullable = false)
@@ -70,7 +70,7 @@ public class Member {
         this.turnNumber = turnNumber;
     }
 
-    public Integer getId() {
+    public Integer getMemberId() {
         return id;
     }
 
