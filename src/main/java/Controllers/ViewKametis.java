@@ -2,7 +2,7 @@ package Controllers;
 
 import Entities.Kameti;
 import Main.Main;
-import Main.KametiManagementSystem;
+import Main.KametiDatabaseHandler;
 import Utility.Selectedkameti;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -44,7 +44,7 @@ public class ViewKametis implements Initializable {
     }
 
     private void loadCreatedKametis() {
-        KametiManagementSystem kms = new KametiManagementSystem();
+        KametiDatabaseHandler kms = new KametiDatabaseHandler();
         ArrayList<String> k = kms.retrieveOwnedKametis();
         ownedKametiList.getItems().addAll(k);
         ownedKametiList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -65,7 +65,7 @@ public class ViewKametis implements Initializable {
     }
 
     private void loadJoinedKametis() {
-        KametiManagementSystem kms = new KametiManagementSystem();
+        KametiDatabaseHandler kms = new KametiDatabaseHandler();
         ArrayList<String> k = kms.retrieveJoinedKametis();
         joinedkametiList.getItems().addAll(k);
         joinedkametiList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -100,7 +100,7 @@ public class ViewKametis implements Initializable {
     @FXML
     void chooseButtonClicked(MouseEvent event) {
 
-        KametiManagementSystem kms = new KametiManagementSystem();
+        KametiDatabaseHandler kms = new KametiDatabaseHandler();
 
         try {
             if (selectedKameti.size() != 0) {
@@ -122,7 +122,7 @@ public class ViewKametis implements Initializable {
             }
         }
         catch(Exception e){
-            System.out.println("I dont know anymore");
+            System.out.println("I dont know anymore :(");
         }
     }
 }

@@ -1,7 +1,7 @@
 package Controllers;
 
 import Exceptions.ProgressLostException;
-import Main.KametiManagementSystem;
+import Main.KametiDatabaseHandler;
 import Main.Main;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,7 +17,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -83,7 +82,7 @@ public class CreateAKameti implements Initializable {
 
     @FXML
     void submitButtonClicked(MouseEvent event) throws IOException {
-        KametiManagementSystem kms = new KametiManagementSystem();
+        KametiDatabaseHandler kms = new KametiDatabaseHandler();
         System.out.println("Name = " + kametiNameField.getText());
         System.out.println("frequency = " + frequency);
         System.out.println("rule 1 = " + rule1Check.isSelected());

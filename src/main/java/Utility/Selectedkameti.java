@@ -1,7 +1,6 @@
 package Utility;
 
 import Entities.Kameti;
-import Entities.User;
 
 public class Selectedkameti {
     private static Selectedkameti selectedkameti = null;

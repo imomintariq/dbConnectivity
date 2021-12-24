@@ -1,24 +1,19 @@
-import Main.KametiManagementSystem;
-import org.junit.AfterClass;
-import org.junit.Before;
+import Main.KametiDatabaseHandler;
 import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.jupiter.api.*;
-import org.junit.runners.MethodSorters;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class test {
 
-    static KametiManagementSystem kms;
+    static KametiDatabaseHandler kms;
     static ArrayList<String> kametiStringList;
 
     @BeforeClass
     public static void setUp(){
-        kms = new KametiManagementSystem();
+        kms = new KametiDatabaseHandler();
         kametiStringList = kms.retrievePublicKametis();
         kms.registerAUser("sampleUser","password","sampleuser@email.com","13123 3123123 12","Sample","User","0300 0000000","password",true);
     }

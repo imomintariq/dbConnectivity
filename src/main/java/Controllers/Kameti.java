@@ -1,7 +1,7 @@
 package Controllers;
 
 import Main.Main;
-import Main.KametiManagementSystem;
+import Main.KametiDatabaseHandler;
 import Utility.Selectedkameti;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -15,7 +15,6 @@ import javafx.scene.input.MouseEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.StringTokenizer;
 
 public class Kameti implements Initializable {
 
@@ -79,7 +78,7 @@ public class Kameti implements Initializable {
         kametiName.setText(sc.getKameti().getKametiName());
         kametiID.setVisible(true);
 
-        KametiManagementSystem kms = new KametiManagementSystem();
+        KametiDatabaseHandler kms = new KametiDatabaseHandler();
         ArrayList<String> k = kms.retrieveKametiMembers();
         membersList.getItems().addAll(k);
         membersList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {

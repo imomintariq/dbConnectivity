@@ -12,7 +12,7 @@ public class Music implements Runnable{
     public void run() {
 
         try {
-            File file = new File("sampleAudio.wav");
+            File file = new File("sampleAudio123.wav");
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
             DataLine.Info info = new DataLine.Info(Clip.class, audioInputStream.getFormat());
             Clip clip = (Clip)AudioSystem.getLine(info);

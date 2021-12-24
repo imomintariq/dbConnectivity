@@ -1,7 +1,7 @@
 package Controllers;
 
 import Main.Main;
-import Main.KametiManagementSystem;
+import Main.KametiDatabaseHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -66,7 +66,7 @@ public class NewAdmin {
 
 
         if (_password.equals(_confirmedPassword)) {
-            KametiManagementSystem kms = new KametiManagementSystem();
+            KametiDatabaseHandler kms = new KametiDatabaseHandler();
             kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword,true);
             FileWriter Fr = new FileWriter("Users.txt",true );
             BufferedWriter br = new BufferedWriter(Fr);

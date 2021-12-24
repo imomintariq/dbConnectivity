@@ -4,7 +4,7 @@ package Controllers;
 import Entities.User;
 import Exceptions.LogInException;
 import Exceptions.SignUpException;
-import Main.KametiManagementSystem;
+import Main.KametiDatabaseHandler;
 import Main.Main;
 import Utility.SignedInUser;
 import javafx.fxml.FXML;
@@ -66,7 +66,7 @@ public class SignUp {
         String _passWord = password.getText();
         User user = new User();
         User user2 = new User();
-        KametiManagementSystem kms = new KametiManagementSystem();
+        KametiDatabaseHandler kms = new KametiDatabaseHandler();
         user = kms.retrieveUser(_username, _passWord);
         boolean flag = false;
 
@@ -123,7 +123,7 @@ public class SignUp {
             String _phoneNumber = phoneNumber.getText();
             String _confirmedPassword = confirmPassword.getText();
             String _username = username.getText();
-            KametiManagementSystem kms = new KametiManagementSystem();
+            KametiDatabaseHandler kms = new KametiDatabaseHandler();
             kms.registerAUser(_username, _password, _email, _cnic, _firstName, _lastName, _phoneNumber, _confirmedPassword,false);
             FileWriter Fr = new FileWriter("Users.txt", true);
             BufferedWriter br = new BufferedWriter(Fr);

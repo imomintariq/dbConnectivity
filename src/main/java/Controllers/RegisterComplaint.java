@@ -4,16 +4,13 @@ import Entities.Kameti;
 import Entities.User;
 import Exceptions.EmptyComplaintException;
 import Main.Main;
-import Main.KametiManagementSystem;
+import Main.KametiDatabaseHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 
 public class RegisterComplaint {
 
@@ -76,14 +73,14 @@ public class RegisterComplaint {
    }
    public boolean CheckEmptyComplaint() throws EmptyComplaintException
    {
-       KametiManagementSystem kms = new KametiManagementSystem();
+       KametiDatabaseHandler kms = new KametiDatabaseHandler();
        Kameti kameti = kms.getKametiWithId(kametiCode.getText());
        if(kameti != null) {
            User user = kms.retrieveUserWithId(reporter.getText());
            if (user != null) {
                User _offender = kms.retrieveUserWithId(offender.getText());
                if(_offender != null){
-                   kms.addComplaintToDb(kameti, user, _offender,complaint.getText());
+                   kms.addComplaint(kameti, user, _offender,complaint.getText());
                    Main main = new Main();
                    try {
                        main.changeScene("StandardUserPages/DashBoard.fxml");

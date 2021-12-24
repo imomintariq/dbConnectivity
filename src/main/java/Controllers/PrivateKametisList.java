@@ -1,6 +1,6 @@
 package Controllers;
 
-import Main.KametiManagementSystem;
+import Main.KametiDatabaseHandler;
 import Main.Main;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -24,7 +24,7 @@ public class PrivateKametisList implements Initializable { //for admin
     @Override
     public void initialize(URL url, ResourceBundle rb){
         selectedKameti = new ArrayList<>();
-        KametiManagementSystem kms = new KametiManagementSystem();
+        KametiDatabaseHandler kms = new KametiDatabaseHandler();
         ArrayList<String> k = kms.retrievePrivateKametis();
         kametiList.getItems().addAll(k);
         kametiList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){

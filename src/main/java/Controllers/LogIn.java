@@ -1,7 +1,6 @@
 package Controllers;
 import Exceptions.LogInException;
-import Exceptions.SignUpException;
-import Main.KametiManagementSystem;
+import Main.KametiDatabaseHandler;
 import Main.Main;
 import Utility.SignedInUser;
 import javafx.fxml.FXML;
@@ -9,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import org.w3c.dom.Text;
 
 public class LogIn {
 
@@ -30,7 +28,7 @@ public class LogIn {
 
     @FXML
     void SignInButtonClicked(MouseEvent event) {
-        KametiManagementSystem kms = new KametiManagementSystem();
+        KametiDatabaseHandler kms = new KametiDatabaseHandler();
         String logIn = kms.LogIn(username.getText(), password.getText());
         try {
             checkLogin(logIn);
@@ -59,7 +57,7 @@ public class LogIn {
             if (flag.equals("standard user") == true) {
                 Main main = new Main();
                 try {
-                    KametiManagementSystem kms = new KametiManagementSystem();
+                    KametiDatabaseHandler kms = new KametiDatabaseHandler();
                     SignedInUser signedInUser = SignedInUser.getInstance();
                     signedInUser.setUser(kms.retrieveUser(username.getText(),password.getText()));
                     //main.changeScene("DashBoard.fxml");

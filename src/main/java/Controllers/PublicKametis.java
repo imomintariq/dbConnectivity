@@ -2,7 +2,7 @@ package Controllers;
 
 import Entities.Kameti;
 import Exceptions.KametiNotSelectedException;
-import Main.KametiManagementSystem;
+import Main.KametiDatabaseHandler;
 import Main.Main;
 import Utility.SignedInUser;
 import javafx.beans.value.ChangeListener;
@@ -13,10 +13,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
-import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 
@@ -37,7 +35,7 @@ public class PublicKametis implements Initializable { //for standard user
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         selectedKameti = new ArrayList<>();
-        KametiManagementSystem kms = new KametiManagementSystem();
+        KametiDatabaseHandler kms = new KametiDatabaseHandler();
         ArrayList<String> k = kms.retrievePublicKametis();
         kametiList.getItems().addAll(k);
         kametiList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -74,7 +72,7 @@ public class PublicKametis implements Initializable { //for standard user
 
     @FXML
     public void joinButtonClicked(javafx.scene.input.MouseEvent mouseEvent) {
-        KametiManagementSystem kms = new KametiManagementSystem();
+        KametiDatabaseHandler kms = new KametiDatabaseHandler();
 
         try {
             if(selectedKameti.size() != 0) {
@@ -97,7 +95,8 @@ public class PublicKametis implements Initializable { //for standard user
             throw new KametiNotSelectedException("Kameti has not been selected");
         }
         else
-        {KametiManagementSystem kms = new KametiManagementSystem();
+        {
+            KametiDatabaseHandler kms = new KametiDatabaseHandler();
             SignedInUser signedInUser = SignedInUser.getInstance();
             kms.addMemberToKameti(signedInUser.getUser(), KametiToCheck);
         }

@@ -8,7 +8,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user")
 public class User {
-
     @Id
     @Column(name = "username", nullable = false, length = 45)
     private String id;
@@ -31,16 +30,26 @@ public class User {
     @Column(name = "phoneNumber", nullable = false, length = 45)
     private String phoneNumber;
 
-    @Column(name = "adminCheck", nullable = false, length = 15)
-    private boolean adminCheck;
+    @Column(name = "adminCheck", nullable = false)
+    private Boolean adminCheck = false;
 
-    public User() {
-        this.adminCheck = false;
+    @Column(name = "accountNumber", length = 45)
+    private String accountNumber;
+
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public User(String id, String password) {
-        this.id = id;
-        this.password = password;
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public Boolean getAdminCheck() {
+        return adminCheck;
+    }
+
+    public void setAdminCheck(Boolean adminCheck) {
+        this.adminCheck = adminCheck;
     }
 
     public String getPhoneNumber() {
@@ -97,13 +106,5 @@ public class User {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public boolean getAdminCheck() {
-        return adminCheck;
-    }
-
-    public void setAdminCheck(boolean check) {
-        this.adminCheck = check;
     }
 }

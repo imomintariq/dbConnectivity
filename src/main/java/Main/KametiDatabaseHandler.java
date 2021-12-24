@@ -6,7 +6,6 @@ import Entities.Member;
 import Entities.User;
 import Utility.Selectedkameti;
 import Utility.SignedInUser;
-import javafx.scene.control.TextField;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -16,7 +15,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KametiManagementSystem {
+public class KametiDatabaseHandler {
 
     private boolean admin; //0 for admin; 1 for standard user.
 
@@ -241,9 +240,9 @@ public class KametiManagementSystem {
 
     public void addMemberToKameti(User user, Kameti kametiToBeJoined) {
 
-        kametiToBeJoined.addMember(user);
+        //kametiToBeJoined.addMember(user);
 
-       /* Configuration con = new Configuration();
+       Configuration con = new Configuration();
         con.configure().addAnnotatedClass(Member.class);
 
         SessionFactory sf= con.buildSessionFactory();
@@ -261,7 +260,7 @@ public class KametiManagementSystem {
         session.save(member);
 
 
-        trans.commit();*/
+        trans.commit();
 
     }
 
@@ -339,7 +338,7 @@ public class KametiManagementSystem {
         return null;
     }
 
-    public void addComplaintToDb(Kameti kameti, User user, User offender, String desc) {
+    public void addComplaint(Kameti kameti, User user, User offender, String desc) {
 
 
         Configuration con = new Configuration();
